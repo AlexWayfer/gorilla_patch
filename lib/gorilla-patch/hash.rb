@@ -3,12 +3,12 @@ module GorillaPatch
 
 		refine Hash do
 
-			def to_sym_keys
+			def keys_to_sym
 				inject({}) { | hash_sym, (key, val) | hash_sym[key.to_sym] = val; hash_sym }
 			end
 
-			def to_sym_keys!
-				hash_sym = to_sym_keys
+			def keys_to_sym!
+				hash_sym = keys_to_sym
 				self.clear.merge! hash_sym
 			end
 

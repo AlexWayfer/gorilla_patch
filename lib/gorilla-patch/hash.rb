@@ -4,21 +4,30 @@ module GorillaPatch
 		refine Hash do
 
 			def keys_to_sym
-				inject({}) { | hash_sym, (key, val) | hash_sym[key.to_sym] = val; hash_sym }
+				each_with_object({}) { |(key, val), hash_sym| hash_sym[key.to_sym] = val }
 			end
 
 			def keys_to_sym!
 				hash_sym = keys_to_sym
-				self.clear.merge! hash_sym
+				clear.merge! hash_sym
 			end
 
 			def keys_to_s
-				inject({}) { | hash_s, (key, val) | hash_s[key.to_s] = val; hash_s }
+				each_with_object({}) { |(key, val), hash_s| hash_s[key.to_s] = val }
 			end
 
 			def keys_to_s!
 				hash_s = keys_to_s
-				self.clear.merge! hash_s
+				clear.merge! hash_s
+			end
+
+			def except(*keys)
+				dup.except!(*keys)
+			end
+
+			def except!(*keys)
+				keys.each { |key| delete(key) }
+				self
 			end
 
 		end

@@ -30,6 +30,14 @@ module GorillaPatch
 				self
 			end
 
+			def compact
+				dup.compact!
+			end
+
+			def compact!
+				delete_if { |_k, v| v.nil? }
+			end
+
 		end
 
 	end

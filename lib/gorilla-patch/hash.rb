@@ -1,8 +1,7 @@
 module GorillaPatch
+	## Refine Hash class
 	module HashExt
-
 		refine Hash do
-
 			def keys_to_sym
 				each_with_object({}) { |(key, val), hash_sym| hash_sym[key.to_sym] = val }
 			end
@@ -37,8 +36,6 @@ module GorillaPatch
 			def compact!
 				delete_if { |_k, v| v.nil? }
 			end
-
 		end
-
 	end
 end

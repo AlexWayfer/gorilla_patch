@@ -1,8 +1,7 @@
 module GorillaPatch
+	## Refine String class
 	module StringExt
-
 		refine String do
-
 			def underscore
 				self.gsub!(/::/, '/')
 				  .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
@@ -10,8 +9,6 @@ module GorillaPatch
 				  .tr('-', '_')
 				  .downcase
 			end
-
 		end
-
 	end
 end

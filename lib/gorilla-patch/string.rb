@@ -9,6 +9,10 @@ module GorillaPatch
 				  .tr('-', '_')
 				  .downcase
 			end
+
+			def demodulize
+				split('::').last
+			end
 		end
 	end
 end

@@ -13,6 +13,12 @@ module GorillaPatch
 			def demodulize
 				split('::').last
 			end
+
+			def camelize
+				split('/')
+				  .map { |s| s.split('_').collect(&:capitalize).join }
+				  .join('::')
+			end
 		end
 	end
 end

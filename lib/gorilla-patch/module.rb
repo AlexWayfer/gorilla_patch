@@ -1,3 +1,5 @@
+require_relative './string'
+
 module GorillaPatch
 	## Refine Module class
 	module ModuleExt

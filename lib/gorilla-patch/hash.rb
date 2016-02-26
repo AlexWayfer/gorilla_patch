@@ -36,6 +36,21 @@ module GorillaPatch
 			def compact!
 				delete_if { |_k, v| v.nil? }
 			end
+
+			def slice(*keys)
+				keys.each_with_object({}) { |k, hash| hash[k] = self[k] if key?(k) }
+			end
+
+			def slice!(*keys)
+				omit = slice(*self.keys - keys)
+				hash = slice(*keys)
+				replace(hash)
+				omit
+			end
+
+			def keys?(*keys)
+				keys.all? { |k| key?(k) }
+			end
 		end
 	end
 end

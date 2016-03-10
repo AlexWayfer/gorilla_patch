@@ -2,12 +2,16 @@ module GorillaPatch
 	## Refine Hash class
 	module HashExt
 		refine Hash do
-			def keys_to_sym
-				each_with_object({}) { |(key, val), hash_sym| hash_sym[key.to_sym] = val }
+			def keys_to_sym(deep: false)
+				each_with_object({}) do |(key, val), hash_sym|
+					val = val.keys_to_sym(deep: deep) if deep && val.is_a?(Hash)
+					key = key.to_sym if key.respond_to?(:to_sym)
+					hash_sym[key] = val
+				end
 			end
 
-			def keys_to_sym!
-				hash_sym = keys_to_sym
+			def keys_to_sym!(deep: false)
+				hash_sym = keys_to_sym(deep: deep)
 				clear.merge! hash_sym
 			end
 

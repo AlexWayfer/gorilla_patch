@@ -15,12 +15,16 @@ module GorillaPatch
 				clear.merge! hash_sym
 			end
 
-			def keys_to_s
-				each_with_object({}) { |(key, val), hash_s| hash_s[key.to_s] = val }
+			def keys_to_s(deep: false)
+				each_with_object({}) do |(key, val), hash_s|
+					val = val.keys_to_s(deep: deep) if deep && val.is_a?(Hash)
+					key = key.to_s if key.respond_to?(:to_s)
+					hash_s[key] = val
+				end
 			end
 
-			def keys_to_s!
-				hash_s = keys_to_s
+			def keys_to_s!(deep: false)
+				hash_s = keys_to_s(deep: deep)
 				clear.merge! hash_s
 			end
 

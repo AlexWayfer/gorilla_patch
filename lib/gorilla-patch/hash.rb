@@ -38,11 +38,11 @@ module GorillaPatch
 			end
 
 			def compact
-				dup.compact!
+				select { |_key, value| !value.nil? }
 			end
 
 			def compact!
-				delete_if { |_k, v| v.nil? }
+				reject! { |_key, value| value.nil? }
 			end
 
 			def slice(*keys)

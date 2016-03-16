@@ -56,6 +56,13 @@ module GorillaPatch
 				omit
 			end
 
+			def slice_reverse!(*keys)
+				omit = slice!(*keys)
+				hash = dup
+				replace(omit)
+				hash
+			end
+
 			def keys?(*keys)
 				keys.all? { |k| key?(k) }
 			end

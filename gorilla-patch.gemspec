@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
 		'lib/gorilla-patch/module.rb',
 		'lib/gorilla-patch/string.rb'
 	]
-	s.homepage      = 'https://gitlab.com/AlexWayfer/gorilla-patch'
+	s.homepage      = 'https://github.com/AlexWayfer/gorilla-patch'
 	s.license       = 'MIT'
 end

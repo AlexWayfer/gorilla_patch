@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name          = 'gorilla-patch'
-	s.version       = '0.0.15'
+	s.version       = '0.0.16'
 	s.date          = Date.today.to_s
 	s.summary       = 'Monkey patch, Core extensions'
 	s.description   = 'Refine Ruby Core classes.'

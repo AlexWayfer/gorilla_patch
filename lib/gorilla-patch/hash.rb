@@ -4,7 +4,7 @@ module GorillaPatch
 		refine Hash do
 			def keys_to_sym(deep: false)
 				each_with_object({}) do |(key, val), hash_sym|
-					val = val.keys_to_sym(deep: deep) if deep && val.is_a?(Hash)
+					val = deep_symbolize_keys_in(val) if deep
 					key = key.to_sym if key.respond_to?(:to_sym)
 					hash_sym[key] = val
 				end
@@ -65,6 +65,19 @@ module GorillaPatch
 
 			def keys?(*keys)
 				keys.all? { |k| key?(k) }
+			end
+
+			private
+
+			def deep_symbolize_keys_in(object)
+				case object
+				when Hash
+					object.keys_to_sym(deep: true)
+				when Array
+					object.map { |el| el.keys_to_sym(deep: true) }
+				else
+					object
+				end
 			end
 		end
 	end

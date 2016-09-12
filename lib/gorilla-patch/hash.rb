@@ -74,7 +74,7 @@ module GorillaPatch
 				when Hash
 					object.keys_to_sym(deep: true)
 				when Array
-					object.map { |el| el.keys_to_sym(deep: true) }
+					object.map { |el| deep_symbolize_keys_in(el) }
 				else
 					object
 				end

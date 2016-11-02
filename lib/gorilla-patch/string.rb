@@ -20,5 +20,19 @@ module GorillaPatch
 				  .join('::')
 			end
 		end
+
+		def self.from_sequel
+			@from_sequel ||= Module.new do
+				refine String do
+					require 'sequel'
+
+					Sequel::Inflections.private_instance_methods.each do |method|
+						define_method method do
+							Sequel::Inflections.instance_method(method).bind(self).call(self)
+						end
+					end
+				end
+			end
+		end
 	end
 end

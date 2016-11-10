@@ -1,0 +1,10 @@
+Style/Tab:
+  Enabled: false
+Style/IndentationWidth:
+  Enabled: false
+Style/AccessModifierIndentation:
+  Enabled: false
+Style/FirstParameterIndentation:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  Enabled: false

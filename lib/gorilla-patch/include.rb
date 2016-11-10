@@ -1,6 +1,6 @@
 module GorillaPatch
-	## Refine Array class
-	module RangeExt
+	## Adding include methods
+	module Include
 		refine Range do
 			def include?(value)
 				return super unless value.is_a? Range

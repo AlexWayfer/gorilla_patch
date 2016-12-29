@@ -12,7 +12,9 @@ module GorillaPatch
 
 			def camelize
 				split('/')
-					.map { |s| s.split('_').collect(&:capitalize).join }
+					.map do |s|
+						s.split(/([[:upper:]][[:lower:]]+)|_/).collect(&:capitalize).join
+					end
 					.join('::')
 			end
 		end

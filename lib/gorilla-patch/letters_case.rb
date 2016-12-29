@@ -1,10 +1,6 @@
 module GorillaPatch
 	## Adding case-changing methods
 	module LettersCase
-		def self.used(namespace)
-			puts "Using in #{namespace}!"
-		end
-
 		refine String do
 			def underscore
 				gsub(/::/, '/')

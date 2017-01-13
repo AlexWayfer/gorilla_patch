@@ -2,6 +2,12 @@
 
 Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch))
 
+[![Gem Version](https://badge.fury.io/rb/gorilla-patch.svg)](https://badge.fury.io/rb/gorilla-patch)
+[![Build Status](https://travis-ci.org/AlexWayfer/gorilla-patch.svg?branch=master)](https://travis-ci.org/AlexWayfer/gorilla-patch)
+[![Build Status](https://travis-ci.org/AlexWayfer/gorilla-patch.svg?branch=master)](https://travis-ci.org/AlexWayfer/gorilla-patch)
+[![Code Climate](https://codeclimate.com/github/AlexWayfer/gorilla-patch/badges/gpa.svg)](https://codeclimate.com/github/AlexWayfer/gorilla-patch)
+[![Test Coverage](https://codeclimate.com/github/AlexWayfer/gorilla-patch/badges/coverage.svg)](https://codeclimate.com/github/AlexWayfer/gorilla-patch/coverage)
+
 # Installing
 
 ```bash

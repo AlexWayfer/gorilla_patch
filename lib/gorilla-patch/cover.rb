@@ -1,8 +1,8 @@
 module GorillaPatch
 	## Adding include methods
-	module Include
+	module Cover
 		refine Range do
-			def include?(value)
+			def cover?(value)
 				return super unless value.is_a? Range
 				super(value.first) && super(value.last)
 			end

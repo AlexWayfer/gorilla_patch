@@ -8,3 +8,9 @@ Style/FirstParameterIndentation:
   Enabled: false
 Style/MultilineMethodCallIndentation:
   Enabled: false
+Style/IndentArray:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'

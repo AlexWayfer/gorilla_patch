@@ -38,5 +38,11 @@ module GorillaPatch
 				end
 			end
 		end
+
+		def self.from_inflecto
+			require 'inflecto-refinements'
+
+			Inflecto::Refinements
+		end
 	end
 end

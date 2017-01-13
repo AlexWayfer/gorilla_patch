@@ -7,7 +7,7 @@ module GorillaPatch
 			end
 
 			def compact!
-				reject! { |_key, value| value.nil? }
+				delete_if { |_key, value| value.nil? }
 			end
 		end
 	end

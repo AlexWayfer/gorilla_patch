@@ -1,4 +1,4 @@
-require 'gorilla-patch/inflections'
+require 'spec_helper'
 
 describe GorillaPatch::Inflections do
 	using GorillaPatch::Inflections

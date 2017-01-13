@@ -1,4 +1,4 @@
-require 'gorilla-patch/namespace'
+require 'spec_helper'
 
 describe GorillaPatch::Namespace do
 	using GorillaPatch::Namespace

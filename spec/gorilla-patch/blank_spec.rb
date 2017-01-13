@@ -1,4 +1,4 @@
-require 'gorilla-patch/blank'
+require 'spec_helper'
 
 describe GorillaPatch::Blank do
 	using GorillaPatch::Blank
@@ -11,15 +11,15 @@ describe GorillaPatch::Blank do
 	end
 
 	describe Array do
-		let(:array) { [1, nil, '', :sym, 'a'] }
+		let(:array) { [1, nil, '', 'a', [''], {}] }
 
 		describe 'reject_blank_strings' do
-			it { expect(array.reject_blank_strings).to eq [1, nil, :sym, 'a'] }
+			it { expect(array.reject_blank_strings).to eq [1, nil, 'a'] }
 			it { expect(array.reject_blank_strings).not_to be array }
 		end
 
 		describe 'reject_blank_strings!' do
-			it { expect(array.reject_blank_strings!).to eq [1, nil, :sym, 'a'] }
+			it { expect(array.reject_blank_strings!).to eq [1, nil, 'a'] }
 			it { expect(array.reject_blank_strings!).to be array }
 		end
 	end

@@ -1,4 +1,4 @@
-require 'gorilla-patch/cover'
+require 'spec_helper'
 
 describe GorillaPatch::Cover do
 	using GorillaPatch::Cover

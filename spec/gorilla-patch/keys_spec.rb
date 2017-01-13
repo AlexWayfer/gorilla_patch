@@ -1,4 +1,4 @@
-require 'gorilla-patch/keys'
+require 'spec_helper'
 
 describe GorillaPatch::Keys do
 	using GorillaPatch::Keys

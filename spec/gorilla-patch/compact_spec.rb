@@ -1,4 +1,4 @@
-require 'gorilla-patch/compact'
+require 'spec_helper'
 
 describe GorillaPatch::Compact do
 	using GorillaPatch::Compact

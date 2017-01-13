@@ -1,4 +1,4 @@
-require 'gorilla-patch/except'
+require 'spec_helper'
 
 describe GorillaPatch::Except do
 	using GorillaPatch::Except

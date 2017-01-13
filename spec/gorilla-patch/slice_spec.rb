@@ -1,4 +1,4 @@
-require 'gorilla-patch/slice'
+require 'spec_helper'
 
 describe GorillaPatch::Slice do
 	using GorillaPatch::Slice

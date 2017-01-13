@@ -1,4 +1,4 @@
-require 'gorilla-patch/deep_dup'
+require 'spec_helper'
 
 describe GorillaPatch::DeepDup do
 	using GorillaPatch::DeepDup

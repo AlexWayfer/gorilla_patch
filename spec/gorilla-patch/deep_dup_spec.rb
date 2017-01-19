@@ -10,6 +10,13 @@ describe GorillaPatch::DeepDup do
 		it { expect(string.deep_dup).not_to be string }
 	end
 
+	describe Symbol do
+		let!(:symbol) { :symbol }
+
+		it { expect(symbol.deep_dup).to eq symbol }
+		it { expect(symbol.deep_dup).to be symbol }
+	end
+
 	describe Hash do
 		let(:hash) { { a: 1, b: [2, 3], c: { d: 4 } } }
 

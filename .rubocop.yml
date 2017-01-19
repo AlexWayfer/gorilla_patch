@@ -1,16 +1,18 @@
 Style/Tab:
   Enabled: false
 Style/IndentationWidth:
-  Enabled: false
-Style/AccessModifierIndentation:
-  Enabled: false
-Style/FirstParameterIndentation:
-  Enabled: false
-Style/MultilineMethodCallIndentation:
-  Enabled: false
-Style/IndentArray:
-  Enabled: false
+  Width: 1
 
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+
+Style/SymbolProc:
+  Exclude:
+    # Bug in Ruby 2.3: https://bugs.ruby-lang.org/issues/12638
+    - 'lib/gorilla-patch/deep_dup.rb'
+
+Style/FileName:
+  Exclude:
+    # Consistency of naming
+    - '**/gorilla-patch*'

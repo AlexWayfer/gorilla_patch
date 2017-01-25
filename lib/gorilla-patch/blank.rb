@@ -9,6 +9,12 @@ module GorillaPatch
 			end
 		end
 
+		refine NilClass do
+			def blank?
+				true
+			end
+		end
+
 		[Array, Hash].each do |klass|
 			refine klass do
 				def reject_blank_strings!

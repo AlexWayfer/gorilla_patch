@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 Gem::Specification.new do |s|
 	s.name          = 'gorilla-patch'
-	s.version       = '2.1.0'
+	s.version       = '2.1.1'
 	s.date          = Date.today.to_s
 	s.summary       = 'Refining core classes'
 	s.description   = 'Refine Ruby Core classes with methods like Active Support.'

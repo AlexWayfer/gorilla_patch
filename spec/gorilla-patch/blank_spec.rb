@@ -10,6 +10,10 @@ describe GorillaPatch::Blank do
 		it { expect('  a  '.blank?).to be false }
 	end
 
+	describe NilClass, '#blank?' do
+		it { expect(nil.blank?).to be true }
+	end
+
 	describe Array do
 		let(:array) { [1, nil, '', 'a', [''], {}] }
 

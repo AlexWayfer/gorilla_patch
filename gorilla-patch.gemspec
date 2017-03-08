@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'date'
+
 Gem::Specification.new do |s|
 	s.name          = 'gorilla-patch'
 	s.version       = '2.1.1'

@@ -9,9 +9,11 @@ module GorillaPatch
 			end
 		end
 
-		refine Module do
-			def demodulize
-				to_s.demodulize
+		[Module, Class].each do |klass|
+			refine klass do
+				def demodulize
+					to_s.demodulize
+				end
 			end
 		end
 	end

@@ -14,4 +14,20 @@ describe GorillaPatch::Namespace do
 		it { expect(GorillaPatch::Namespace.demodulize).to eq 'Namespace' }
 		it { expect(GorillaPatch.demodulize).to eq 'GorillaPatch' }
 	end
+
+	describe Class, '#demodulize' do
+		class Class
+			private
+
+			def demodulize; end
+		end
+
+		module GorillaPatch; class NamespaceClass; end; end
+
+		using GorillaPatch::Namespace
+
+		it do
+			expect(GorillaPatch::NamespaceClass.demodulize).to eq 'NamespaceClass'
+		end
+	end
 end

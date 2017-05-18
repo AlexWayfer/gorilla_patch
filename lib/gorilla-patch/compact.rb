@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GorillaPatch
 	## Adding compact methods
 	module Compact

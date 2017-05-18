@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GorillaPatch
 	## Adding keys methods
 	module Keys

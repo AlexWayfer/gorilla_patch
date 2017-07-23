@@ -1,5 +1,7 @@
 *.gem
+coverage/
 
 Gemfile.lock
+.ruby-version
 
-test.*
+.test.rb

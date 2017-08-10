@@ -32,4 +32,18 @@ describe GorillaPatch::Namespace do
 			expect(GorillaPatch::NamespaceClass.demodulize).to eq 'NamespaceClass'
 		end
 	end
+
+	describe String, '#deconstantize' do
+		it { expect('Foo::Bar::Baz'.deconstantize).to eq 'Foo::Bar' }
+		it { expect('Foo::Bar'.deconstantize).to eq 'Foo' }
+		it { expect('::Foo::Bar'.deconstantize).to eq '::Foo' }
+		it { expect('Foo'.deconstantize).to eq '' }
+		it { expect('::Foo'.deconstantize).to eq '' }
+		it { expect(''.deconstantize).to eq '' }
+	end
+
+	describe Module, '#deconstantize' do
+		it { expect(GorillaPatch::Namespace.deconstantize).to eq 'GorillaPatch' }
+		it { expect(GorillaPatch.deconstantize).to eq '' }
+	end
 end

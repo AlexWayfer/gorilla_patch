@@ -5,14 +5,14 @@ module GorillaPatch
 	module Namespace
 		refine String do
 			def demodulize
-				split('::').last
+				split('::').last.to_s
 			end
 		end
 
 		[Module, Class].each do |klass|
 			refine klass do
 				def demodulize
-					to_s.demodulize
+					name.demodulize
 				end
 			end
 		end

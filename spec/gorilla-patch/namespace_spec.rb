@@ -8,6 +8,8 @@ describe GorillaPatch::Namespace do
 	describe String, '#demodulize' do
 		it { expect('Foo::Bar::Baz'.demodulize).to eq 'Baz' }
 		it { expect('Foo'.demodulize).to eq 'Foo' }
+		it { expect('::Foo'.demodulize).to eq 'Foo' }
+		it { expect(''.demodulize).to eq '' }
 	end
 
 	describe Module, '#demodulize' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GorillaPatch
 	## Adding deep_merge method
 	module DeepMerge

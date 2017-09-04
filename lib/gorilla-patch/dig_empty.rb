@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GorillaPatch
 	## Allows dig with 0 arguments
 	module DigEmpty

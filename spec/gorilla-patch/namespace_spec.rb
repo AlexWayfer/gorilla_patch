@@ -17,7 +17,7 @@ describe GorillaPatch::Namespace do
 		it { expect(GorillaPatch.demodulize).to eq 'GorillaPatch' }
 
 		it 'should work for class without name' do
-			expect { Module.new.demodulize }.to_not raise_error(NoMethodError)
+			expect { Module.new.demodulize }.to_not raise_error
 		end
 	end
 
@@ -51,7 +51,7 @@ describe GorillaPatch::Namespace do
 		it { expect(GorillaPatch.deconstantize).to eq '' }
 
 		it 'should work for class without name' do
-			expect { Module.new.deconstantize }.to_not raise_error(NoMethodError)
+			expect { Module.new.deconstantize }.to_not raise_error
 		end
 	end
 end

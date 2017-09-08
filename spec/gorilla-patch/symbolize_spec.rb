@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe GorillaPatch::Symbolize do
 	using GorillaPatch::Symbolize
 

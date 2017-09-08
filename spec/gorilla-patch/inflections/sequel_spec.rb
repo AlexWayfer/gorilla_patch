@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe 'GorillaPatch::Inflections.from_sequel' do
 	using GorillaPatch::Inflections.from_sequel
 

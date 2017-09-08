@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe GorillaPatch::DeepDup do
 	using GorillaPatch::DeepDup
 

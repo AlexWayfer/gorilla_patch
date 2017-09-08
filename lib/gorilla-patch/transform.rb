@@ -12,6 +12,7 @@ module GorillaPatch
 			end
 
 			def transform_values!
+				return super if defined? super
 				each do |key, value|
 					self[key] = yield value
 				end

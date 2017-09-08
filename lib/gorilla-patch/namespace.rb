@@ -15,12 +15,10 @@ module GorillaPatch
 
 		[Module, Class].each do |klass|
 			refine klass do
-				def demodulize
-					name.demodulize
-				end
-
-				def deconstantize
-					name.deconstantize
+				%i[demodulize deconstantize].each do |method_name|
+					define_method method_name do
+						name.to_s.send method_name
+					end
 				end
 			end
 		end

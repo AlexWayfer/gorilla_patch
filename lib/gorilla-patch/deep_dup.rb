@@ -27,5 +27,13 @@ module GorillaPatch
 				map { |el| el.deep_dup }
 			end
 		end
+
+		refine Delegator do
+			def deep_dup
+				dup
+			rescue NoMethodError
+				self
+			end
+		end
 	end
 end

@@ -34,4 +34,13 @@ describe GorillaPatch::DeepDup do
 		it { expect(array.deep_dup[1]).not_to be array[1] }
 		it { expect(array.deep_dup[2]).not_to be array[2] }
 	end
+
+	require 'tempfile'
+
+	describe Tempfile do
+		let(:tempfile) { Tempfile.new('foo') }
+
+		it { expect(tempfile.deep_dup.path).to eq tempfile.path }
+		it { expect(tempfile.deep_dup).not_to be tempfile }
+	end
 end

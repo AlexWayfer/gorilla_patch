@@ -1,6 +1,6 @@
-Style/Tab:
+Layout/Tab:
   Enabled: false
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Width: 1
 
 Metrics/BlockLength:
@@ -12,7 +12,10 @@ Style/SymbolProc:
     # Bug in Ruby 2.3: https://bugs.ruby-lang.org/issues/12638
     - 'lib/gorilla-patch/deep_dup.rb'
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     # Consistency of naming
     - '**/gorilla-patch*'
+
+AllCops:
+  TargetRubyVersion: 2.1

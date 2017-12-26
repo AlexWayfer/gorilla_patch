@@ -16,13 +16,13 @@ Gem::Specification.new do |s|
 
 	s.required_ruby_version = '>= 2.1.0'
 
+	s.add_development_dependency 'codecov', '~> 0'
 	s.add_development_dependency 'rake', '~> 12'
 	s.add_development_dependency 'rspec', '~> 3'
-	s.add_development_dependency 'rubocop', '~> 0.49'
+	s.add_development_dependency 'rubocop', '~> 0.52'
 	s.add_development_dependency 'simplecov', '~> 0'
-	s.add_development_dependency 'codecov', '~> 0'
 
 	## For Inflections testing
-	s.add_development_dependency 'sequel', '~> 5'
 	s.add_development_dependency 'inflecto-refinements', '~> 0'
+	s.add_development_dependency 'sequel', '~> 5'
 end

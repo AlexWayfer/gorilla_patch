@@ -5,7 +5,10 @@ module GorillaPatch
 	module Slice
 		refine Hash do
 			def slice(*keys)
-				keys.each_with_object({}) { |k, hash| hash[k] = self[k] if key?(k) }
+				return super if defined? super
+				keys.each_with_object(self.class.new) do |k, hash|
+					hash[k] = self[k] if key?(k)
+				end
 			end
 
 			def slice!(*keys)

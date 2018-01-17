@@ -17,10 +17,28 @@ module GorillaPatch
 			end
 		end
 
+		# rubocop:disable Metrics/BlockLength
 		[Array, Hash].each do |klass|
 			refine klass do
 				def reject_blank_strings!
 					replace reject_blank_strings
+				end
+
+				def nilify_blank_strings
+					result = map do |element|
+						if element.is_a?(String) && element.blank?
+							nil
+						elsif element.is_a?(Enumerable)
+							element.nilify_blank_strings
+						else
+							element
+						end
+					end
+					is_a?(Hash) ? result.to_h : result
+				end
+
+				def nilify_blank_strings!
+					replace nilify_blank_strings
 				end
 
 				private
@@ -43,6 +61,7 @@ module GorillaPatch
 				end
 			end
 		end
+		# rubocop:enable Metrics/BlockLength
 
 		refine Array do
 			using GorillaPatch::DeepDup

@@ -35,12 +35,23 @@ describe GorillaPatch::DeepDup do
 		it { expect(array.deep_dup[2]).not_to be array[2] }
 	end
 
-	require 'tempfile'
+	require 'delegate'
 
-	describe Tempfile do
-		let(:tempfile) { Tempfile.new('foo') }
+	describe Delegator do
+		describe 'where `#dup` exists' do
+			require 'tempfile'
 
-		it { expect(tempfile.deep_dup.path).to eq tempfile.path }
-		it { expect(tempfile.deep_dup).not_to be tempfile }
+			let(:tempfile) { Tempfile.new('foo') }
+
+			it { expect(tempfile.deep_dup.path).to eq tempfile.path }
+			it { expect(tempfile.deep_dup).not_to be tempfile }
+		end
+
+		describe "where `#dup` doesn't exist" do
+			let(:object) { DelegateClass(BasicObject).new(BasicObject.new) }
+
+			it { expect(object.deep_dup).to eq object }
+			it { expect(object.deep_dup).to be object }
+		end
 	end
 end

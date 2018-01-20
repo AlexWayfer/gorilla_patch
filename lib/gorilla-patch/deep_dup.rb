@@ -28,6 +28,8 @@ module GorillaPatch
 			end
 		end
 
+		require 'delegate'
+
 		refine Delegator do
 			def deep_dup
 				dup

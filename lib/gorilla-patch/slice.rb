@@ -4,22 +4,22 @@ module GorillaPatch
 	## Adding slice methods
 	module Slice
 		refine Hash do
-			def slice(*keys)
-				return super if defined? super
+			def slice(*keys, nils: false)
+				return super if defined?(super) && !nils
 				keys.each_with_object(self.class.new) do |k, hash|
-					hash[k] = self[k] if key?(k)
+					hash[k] = self[k] if nils || key?(k)
 				end
 			end
 
-			def slice!(*keys)
-				omit = slice(*self.keys - keys)
-				hash = slice(*keys)
+			def slice!(*keys, nils: false)
+				omit = slice(*self.keys - keys, nils: nils)
+				hash = slice(*keys, nils: nils)
 				replace(hash)
 				omit
 			end
 
-			def slice_reverse!(*keys)
-				omit = slice!(*keys)
+			def slice_reverse!(*keys, nils: false)
+				omit = slice!(*keys, nils: nils)
 				hash = dup
 				replace(omit)
 				hash

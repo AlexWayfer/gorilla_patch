@@ -16,13 +16,13 @@ describe GorillaPatch::Blank do
 
 	describe Array do
 		let(:array) do
-			[1, nil, '', 'a', [''], [nil, '', 3], {}, { a: nil, b: '', c: 3 }]
+			[1, nil, '', 'a', [''], [nil, '', 3], {}, { a: nil, b: '', c: 3 }, 1..10]
 		end
 
 		describe 'reject_blank_strings' do
 			it do
 				expect(array.reject_blank_strings).to eq(
-					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }]
+					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10]
 				)
 			end
 			it { expect(array.reject_blank_strings).not_to be array }
@@ -31,7 +31,7 @@ describe GorillaPatch::Blank do
 		describe 'reject_blank_strings!' do
 			it do
 				expect(array.reject_blank_strings!).to eq(
-					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }]
+					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10]
 				)
 			end
 			it { expect(array.reject_blank_strings!).to be array }
@@ -40,7 +40,10 @@ describe GorillaPatch::Blank do
 		describe 'nilify_blank_strings' do
 			it do
 				expect(array.nilify_blank_strings).to eq(
-					[1, nil, nil, 'a', [nil], [nil, nil, 3], {}, { a: nil, b: nil, c: 3 }]
+					[
+						1, nil, nil, 'a', [nil], [nil, nil, 3], {},
+						{ a: nil, b: nil, c: 3 }, 1..10
+					]
 				)
 			end
 			it { expect(array.nilify_blank_strings).not_to be array }
@@ -49,7 +52,10 @@ describe GorillaPatch::Blank do
 		describe 'nilify_blank_strings!' do
 			it do
 				expect(array.nilify_blank_strings!).to eq(
-					[1, nil, nil, 'a', [nil], [nil, nil, 3], {}, { a: nil, b: nil, c: 3 }]
+					[
+						1, nil, nil, 'a', [nil], [nil, nil, 3], {},
+						{ a: nil, b: nil, c: 3 }, 1..10
+					]
 				)
 			end
 			it { expect(array.nilify_blank_strings!).to be array }

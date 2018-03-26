@@ -18,7 +18,9 @@ module GorillaPatch
 		end
 
 		# rubocop:disable Metrics/BlockLength
-		[Array, Hash].each do |klass|
+		REFINED_ENUMERABLES = [Array, Hash].freeze
+
+		REFINED_ENUMERABLES.each do |klass|
 			refine klass do
 				def reject_blank_strings!
 					replace reject_blank_strings
@@ -28,7 +30,7 @@ module GorillaPatch
 					result = map do |element|
 						if element.is_a?(String) && element.blank?
 							nil
-						elsif element.is_a?(Enumerable)
+						elsif REFINED_ENUMERABLES.any? { |klass| element.is_a?(klass) }
 							element.nilify_blank_strings
 						else
 							element
@@ -53,7 +55,7 @@ module GorillaPatch
 					case object
 					when String
 						object.strip
-					when Hash, Array
+					when *REFINED_ENUMERABLES
 						object.reject_blank_strings!
 					else
 						object

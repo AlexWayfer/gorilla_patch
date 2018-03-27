@@ -3,6 +3,43 @@
 describe GorillaPatch::Blank do
 	using GorillaPatch::Blank
 
+	describe Object, '#blank?' do
+		context 'with #empty? method' do
+			class ObjectWithEmptyMethod
+				def initialize(empty: true)
+					@empty = empty
+				end
+
+				def empty?
+					@empty
+				end
+			end
+
+			subject { ObjectWithEmptyMethod.new(empty: empty).blank? }
+
+			context 'when empty' do
+				let(:empty) { true }
+
+				it { is_expected.to be true }
+			end
+
+			context 'when not empty' do
+				let(:empty) { false }
+
+				it { is_expected.to be false }
+			end
+		end
+
+		context 'without #empty? method' do
+			class ObjectWithoutEmptyMethod
+			end
+
+			subject { -> { ObjectWithoutEmptyMethod.new.blank? } }
+
+			it { is_expected.to raise_error(NoMethodError, /empty\?/) }
+		end
+	end
+
 	describe String, '#blank?' do
 		it { expect(''.blank?).to be true }
 		it { expect('   '.blank?).to be true }

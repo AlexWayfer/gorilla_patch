@@ -5,6 +5,12 @@ require_relative 'deep_dup'
 module GorillaPatch
 	## Adding blank methods
 	module Blank
+		refine Object do
+			def blank?
+				empty?
+			end
+		end
+
 		refine String do
 			def blank?
 				strip.empty?

@@ -38,10 +38,9 @@ end
 hash.keys? :a, :b # undefined method!
 ```
 
-## Using using?!
+## What is `using`?
 
-Yep. It's standart feature. [Read more](http://ruby-doc.org/core/doc/syntax/refinements_rdoc.html)
-
+[It's standard feature](http://ruby-doc.org/core/doc/syntax/refinements_rdoc.html).
 
 # Testing
 

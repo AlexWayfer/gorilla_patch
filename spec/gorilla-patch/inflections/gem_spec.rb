@@ -3,6 +3,14 @@
 describe GorillaPatch::Inflections do
 	using GorillaPatch::Inflections
 
+	describe '.acronym' do
+		it 'remembers new acronym' do
+			described_class.acronyms.push 'HMAC'
+			expect('hmac'.camelize).to eq('HMAC')
+			expect('Hmac'.camelize).to eq('HMAC')
+		end
+	end
+
 	describe String do
 		describe '#underscore' do
 			it { expect('PascalCase'.underscore).to eq 'pascal_case' }
@@ -12,6 +20,9 @@ describe GorillaPatch::Inflections do
 			it { expect('kebab-case'.underscore).to eq 'kebab_case' }
 			it { expect('snake_case'.underscore).to eq 'snake_case' }
 			it { expect('foo/snake_case').to eq 'foo/snake_case' }
+			it { expect('JSON'.underscore).to eq('json') }
+			it { expect('HTTP::Get'.underscore).to eq('http/get') }
+			it { expect('HTTPError'.underscore).to eq('http_error') }
 		end
 
 		describe '#camelize' do
@@ -22,6 +33,11 @@ describe GorillaPatch::Inflections do
 			it { expect('kebab-case'.camelize).to eq 'KebabCase' }
 			it { expect('snake_case'.camelize).to eq 'SnakeCase' }
 			it { expect('foo/snake_case'.camelize).to eq 'Foo::SnakeCase' }
+			it { expect('ip'.camelize).to eq('IP') }
+			it { expect('HTTP'.camelize).to eq('HTTP') }
+			it { expect('Api'.camelize).to eq('API') }
+			it { expect('http/get'.camelize).to eq('HTTP::Get') }
+			it { expect('http_error'.camelize).to eq('HTTPError') }
 		end
 	end
 

@@ -3,6 +3,10 @@
 module GorillaPatch
 	## Inflections
 	module Inflections
+		def self.acronyms
+			@acronyms ||= %w[API HTML XML JSON SSL IP HTTP HTTPS]
+		end
+
 		refine String do
 			def underscore
 				gsub(/::/, '/')
@@ -13,9 +17,13 @@ module GorillaPatch
 			end
 
 			def camelize
+				acronyms = GorillaPatch::Inflections.acronyms
 				split('/')
 					.map do |s|
-						s.split(/([[:upper:]][[:lower:]]*)|_|-/).collect(&:capitalize).join
+						s.split(/([[:upper:]][[:lower:]]*)|_|-/).collect do |part|
+							upcased_part = part.upcase
+							acronyms.include?(upcased_part) ? upcased_part : part.capitalize
+						end.join
 					end
 					.join('::')
 			end

@@ -2,28 +2,28 @@
 
 Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch))
 
-[![Gem Version](https://badge.fury.io/rb/gorilla-patch.svg)](https://badge.fury.io/rb/gorilla-patch)
-[![Build Status](https://travis-ci.org/AlexWayfer/gorilla-patch.svg?branch=master)](https://travis-ci.org/AlexWayfer/gorilla-patch)
-[![codecov](https://codecov.io/gh/AlexWayfer/gorilla-patch/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexWayfer/gorilla-patch)
-[![Code Climate](https://codeclimate.com/github/AlexWayfer/gorilla-patch/badges/gpa.svg)](https://codeclimate.com/github/AlexWayfer/gorilla-patch)
+[![Gem Version](https://badge.fury.io/rb/gorilla_patch.svg)](https://badge.fury.io/rb/gorilla_patch)
+[![Build Status](https://travis-ci.org/AlexWayfer/gorilla_patch.svg?branch=master)](https://travis-ci.org/AlexWayfer/gorilla_patch)
+[![codecov](https://codecov.io/gh/AlexWayfer/gorilla_patch/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
+[![Code Climate](https://codeclimate.com/github/AlexWayfer/gorilla_patch/badges/gpa.svg)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
 
 # Installing
 
 ```bash
-$ gem install gorilla-patch
+$ gem install gorilla_patch
 ```
 
 or with `bundler`:
 
 ```ruby
 # Gemfile
-gem 'gorilla-patch'
+gem 'gorilla_patch'
 ```
 
 # Using
 
 ```ruby
-require 'gorilla-patch' # or 'gorilla-patch/keys' for specific functionallity
+require 'gorilla_patch' # or 'gorilla_patch/keys' for specific functionallity
 
 hash = { a: 1, b: 2 }
 

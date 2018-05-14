@@ -11,4 +11,4 @@ if ENV['CODECOV']
 	SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
-require 'gorilla-patch'
+require 'gorilla_patch'

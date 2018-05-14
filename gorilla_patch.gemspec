@@ -3,7 +3,7 @@
 require 'date'
 
 Gem::Specification.new do |s|
-	s.name          = 'gorilla-patch'
+	s.name          = 'gorilla_patch'
 	s.version       = '2.9.1'
 	s.date          = Date.today.to_s
 	s.summary       = 'Refining core classes'
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 	s.authors       = ['Alexander Popov']
 	s.email         = 'alex.wayfer@gmail.com'
 	s.files = Dir[File.join('lib', '**', '{*,.*}')]
-	s.homepage      = 'https://github.com/AlexWayfer/gorilla-patch'
+	s.homepage      = 'https://github.com/AlexWayfer/gorilla_patch'
 	s.license       = 'MIT'
 
 	s.required_ruby_version = '>= 2.1.0'

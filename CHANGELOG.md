@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 3.0.0 (2018-05-15)
+
 *   Add acronyms for `GorillaPatch::Inflections` (#3)
 *   Rename `gorilla-patch` to `gorilla_patch`
 *   Drop Ruby 2.1 and 2.2 support

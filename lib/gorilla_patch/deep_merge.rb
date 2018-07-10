@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'deep_dup'
+
 module GorillaPatch
 	## Adding deep_merge method
 	module DeepMerge
@@ -14,8 +16,10 @@ module GorillaPatch
 				self
 			end
 
+			using GorillaPatch::DeepDup
+
 			def deep_merge(other_hash, &block)
-				dup.deep_merge!(other_hash, &block)
+				deep_dup.deep_merge!(other_hash, &block)
 			end
 
 			private

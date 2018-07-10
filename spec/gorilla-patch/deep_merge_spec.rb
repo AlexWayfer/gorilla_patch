@@ -12,7 +12,8 @@ describe GorillaPatch::DeepMerge do
 
 			it { expect(subject).to eq(a: 5, b: [2, 3], c: { d: 4, e: [6, 7] }) }
 			it { expect(subject).not_to be init_hash }
-			it { expect(subject[:b]).to be init_hash[:b] }
+			it { expect(subject[:b]).not_to be init_hash[:b] }
+			it { expect(subject[:c]).not_to be init_hash[:c] }
 			it { expect(subject[:c][:e]).to be merged_hash[:c][:e] }
 
 			context 'with block' do

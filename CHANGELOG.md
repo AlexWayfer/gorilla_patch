@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+*   Change `Hash#deep_merge` to do `#deep_dup` for nested objects duplicating
+
 ## 3.0.0 (2018-05-15)
 
 *   Add acronyms for `GorillaPatch::Inflections` (#3)

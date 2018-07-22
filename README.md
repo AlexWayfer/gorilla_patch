@@ -42,6 +42,127 @@ hash.keys? :a, :b # undefined method!
 
 [It's standard feature](http://ruby-doc.org/core/doc/syntax/refinements_rdoc.html).
 
+# Methods
+
+*   **Blank**
+
+    *   **`String`**, **`NilClass`**
+
+        *   `#blank?`
+
+    *   **`Array`**, **`Hash`**
+
+        *   `#reject_blank_strings`
+
+        *   `#reject_blank_strings!`
+
+        *   `#nilify_blank_strings`
+
+        *   `#nilify_blank_strings!`
+
+*   **Compact**
+
+    *   **`Hash`**
+
+        *   `#compact`
+
+        *   `#compact!`
+
+*   **Cover**
+
+    *   **`Range`**
+
+        *   `#cover?(value)`
+
+*   **DeepDup**
+
+    *   **`Object`**, **`Hash`**, **`Array`**, **`Delegator`**
+
+        *   `#deep_dup`
+
+*   **DeepMerge**
+
+    *   **`Hash`**
+
+        *   `#deep_merge(other_hash, &block)`
+
+        *   `#deep_merge!(other_hash, &block)`
+
+*   **DigEmpty**
+
+    *   **`Hash`**
+
+        *   `#dig()`
+
+*   **Except**
+
+    *   **`Hash`**
+
+        *   `#except(*)`
+
+        *   `#except!(*)`
+
+*   **Inflections**
+
+    * `.acronyms`
+
+    * `.from_sequel`
+
+    * `.from_inflecto`
+
+    *   **`String`**, **`Module`**
+
+        *   `#underscore`
+
+    *   **`String`**
+
+        *   `#camelize`
+
+*   **Keys**
+
+    *   **`Hash`**
+
+        *   `#keys?(*)`
+
+*   **Namespace**
+    *   **`String`**, **`Module`**, **`Class`**
+
+        *   `#demodulize`
+
+        *   `#deconstantize`
+
+*   **Slice**
+
+    *   **`Hash`**
+
+        *   `#slice(*, nils: false)`
+
+        *   `#slice!(*, nils: false)`
+
+        *   `#slice_reverse!(*, nils: false)`
+
+*   **Symbolize**
+
+    *   **`Hash`**
+
+        *   `#symbolize_keys(deep: false)`
+
+        *   `#symbolize_keys!(deep: false)`
+
+*   **Transform**
+
+    *   **`Hash`**
+
+        *   `#transform_values`
+
+        *   `#transform_values!`
+
+*   **Truncate**
+
+    *   **`String`**
+
+        *   `#truncate(position, separator: '', omission: '...')`
+
 # Testing
 
 ```

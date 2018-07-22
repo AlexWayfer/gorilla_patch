@@ -7,7 +7,7 @@ Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.
 [![codecov](https://codecov.io/gh/AlexWayfer/gorilla_patch/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
 [![Code Climate](https://codeclimate.com/github/AlexWayfer/gorilla_patch/badges/gpa.svg)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
 
-# Installing
+# Installation
 
 ```bash
 $ gem install gorilla_patch
@@ -20,7 +20,7 @@ or with `bundler`:
 gem 'gorilla_patch'
 ```
 
-# Using
+# Usage
 
 ```ruby
 require 'gorilla_patch' # or 'gorilla_patch/keys' for specific functionallity

@@ -17,6 +17,12 @@ module GorillaPatch
 			end
 		end
 
+		refine Object do
+			def blank?
+				respond_to?(:empty?) ? empty? : !self
+			end
+		end
+
 		# rubocop:disable Metrics/BlockLength
 		REFINED_ENUMERABLES = [Array, Hash].freeze
 

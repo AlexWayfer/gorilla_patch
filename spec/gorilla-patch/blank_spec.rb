@@ -14,6 +14,34 @@ describe GorillaPatch::Blank do
 		it { expect(nil.blank?).to be true }
 	end
 
+	describe Object, '#blank?' do
+		let(:object) { object_class.new }
+
+		subject { object.blank? }
+
+		context 'object with `#empty?` method' do
+			let(:object_class) do
+				Class.new(Object) do
+					def empty?
+						true
+					end
+				end
+			end
+
+			it { is_expected.to be true }
+		end
+
+		context 'object without `#empty?` method' do
+			let(:object_class) do
+				Class.new(Object) do
+					undef_method :empty? if respond_to? :empty?
+				end
+			end
+
+			it { is_expected.to be false }
+		end
+	end
+
 	describe Array do
 		let(:array) do
 			[1, nil, '', 'a', [''], [nil, '', 3], {}, { a: nil, b: '', c: 3 }, 1..10]

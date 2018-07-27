@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+*   Add `Object#blank?`
+
 ## 3.0.1 (2018-07-10)
 
 *   Change `Hash#deep_merge` to do `#deep_dup` for nested objects duplicating

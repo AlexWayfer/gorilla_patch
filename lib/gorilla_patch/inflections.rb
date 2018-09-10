@@ -4,7 +4,7 @@ module GorillaPatch
 	## Inflections
 	module Inflections
 		def self.acronyms
-			@acronyms ||= %w[API HTML XML JSON SSL IP HTTP HTTPS]
+			@acronyms ||= %w[API HTML XML JSON SSL ID IP HTTP HTTPS]
 		end
 
 		refine String do

@@ -3,29 +3,40 @@
 module GorillaPatch
 	## Inflections
 	module Inflections
-		def self.acronyms
-			@acronyms ||= %w[API HTML XML JSON SSL ID IP HTTP HTTPS]
+		class << self
+			def acronyms
+				@acronyms ||= %w[API HTML XML JSON SSL ID IP HTTP HTTPS]
+			end
+
+			def acronyms_regex
+				/(?:(?<=([A-Za-z\d_]))|\b)((?i)#{acronyms.join('|')})(?=\b|[^a-z])/
+			end
 		end
 
 		refine String do
 			def underscore
-				gsub(/::/, '/')
-					.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-					.gsub(/([a-z\d])([A-Z])/, '\1_\2')
-					.tr('-', '_')
-					.downcase
+				result = gsub('::', '/')
+				result.gsub!(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
+				result.gsub!(GorillaPatch::Inflections.acronyms_regex) do
+					"#{Regexp.last_match(1) && '_'}#{Regexp.last_match(2).downcase}"
+				end
+				result.gsub!(/([a-z\d])([A-Z])/, '\1_\2')
+				result.tr!('-', '_')
+				result.downcase
 			end
 
 			def camelize
 				acronyms = GorillaPatch::Inflections.acronyms
-				split('/')
-					.map do |s|
-						s.split(/([[:upper:]][[:lower:]]*)|_|-/).collect do |part|
-							upcased_part = part.upcase
-							acronyms.include?(upcased_part) ? upcased_part : part.capitalize
-						end.join
+
+				result = gsub(GorillaPatch::Inflections.acronyms_regex) do
+					acronyms.find do |acronym|
+						acronym.downcase == Regexp.last_match(2).downcase
 					end
-					.join('::')
+				end
+				result.gsub!(%r{(?:^|_|-|(/))([a-z\d]*)}) do
+					"#{Regexp.last_match(1)}#{Regexp.last_match(2).capitalize}"
+				end
+				result.gsub('/', '::')
 			end
 		end
 

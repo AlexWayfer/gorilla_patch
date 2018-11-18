@@ -9,6 +9,14 @@ describe GorillaPatch::Inflections do
 			expect('hmac'.camelize).to eq('HMAC')
 			expect('Hmac'.camelize).to eq('HMAC')
 		end
+
+		it 'works with not only capsed' do
+			described_class.acronyms.push 'McDonald'
+			expect('McDonald'.underscore).to eq('mcdonald')
+			expect('API::McDonald'.underscore).to eq('api/mcdonald')
+			expect('McDonaldCompany'.underscore).to eq('mcdonald_company')
+			expect('mcdonald'.camelize).to eq('McDonald')
+		end
 	end
 
 	describe String do
@@ -23,6 +31,7 @@ describe GorillaPatch::Inflections do
 			it { expect('JSON'.underscore).to eq('json') }
 			it { expect('HTTP::Get'.underscore).to eq('http/get') }
 			it { expect('HTTPError'.underscore).to eq('http_error') }
+			it { expect('ClientHTTPError'.underscore).to eq('client_http_error') }
 		end
 
 		describe '#camelize' do
@@ -34,10 +43,13 @@ describe GorillaPatch::Inflections do
 			it { expect('snake_case'.camelize).to eq 'SnakeCase' }
 			it { expect('foo/snake_case'.camelize).to eq 'Foo::SnakeCase' }
 			it { expect('ip'.camelize).to eq('IP') }
+			it { expect('shipper'.camelize).to eq('Shipper') }
 			it { expect('HTTP'.camelize).to eq('HTTP') }
+			it { expect('application_REST'.camelize).to eq('ApplicationREST') }
 			it { expect('Api'.camelize).to eq('API') }
 			it { expect('http/get'.camelize).to eq('HTTP::Get') }
 			it { expect('http_error'.camelize).to eq('HTTPError') }
+			it { expect('client_http_error'.camelize).to eq('ClientHTTPError') }
 		end
 	end
 

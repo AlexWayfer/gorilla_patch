@@ -14,5 +14,9 @@ Style/SymbolProc:
     # Bug in Ruby 2.3: https://bugs.ruby-lang.org/issues/12638
     - 'lib/gorilla_patch/deep_dup.rb'
 
+Performance/Casecmp:
+  ## https://github.com/rubocop-hq/rubocop/issues/4277
+  Enabled: false
+
 AllCops:
   TargetRubyVersion: 2.3

@@ -32,6 +32,7 @@ describe GorillaPatch::Inflections do
 			it { expect('HTTP::Get'.underscore).to eq('http/get') }
 			it { expect('HTTPError'.underscore).to eq('http_error') }
 			it { expect('ClientHTTPError'.underscore).to eq('client_http_error') }
+			it { expect('Paid'.underscore).to eq('paid') }
 		end
 
 		describe '#camelize' do
@@ -50,6 +51,7 @@ describe GorillaPatch::Inflections do
 			it { expect('http/get'.camelize).to eq('HTTP::Get') }
 			it { expect('http_error'.camelize).to eq('HTTPError') }
 			it { expect('client_http_error'.camelize).to eq('ClientHTTPError') }
+			it { expect('paid'.camelize).to eq('Paid') }
 		end
 	end
 

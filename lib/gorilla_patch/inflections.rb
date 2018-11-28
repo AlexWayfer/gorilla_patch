@@ -9,7 +9,7 @@ module GorillaPatch
 			end
 
 			def acronyms_regex
-				/(?:(?<=([A-Za-z\d_]))|\b)((?i)#{acronyms.join('|')})(?=\b|[^a-z])/
+				/(?:(?<=([A-Z\d_]))|\b)((?i)#{acronyms.join('|')})(?=\b|[^a-z])/
 			end
 		end
 

@@ -125,6 +125,13 @@ hash.keys? :a, :b # undefined method!
 
         *   `#keys?(*)`
 
+*   **ModuleParent**
+    *   **`Module`**
+
+        *   `#module_parent_name`
+
+        *   `#module_parent`
+
 *   **Namespace**
     *   **`String`**, **`Module`**, **`Class`**
 

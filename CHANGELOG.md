@@ -3,6 +3,7 @@
 ## master (unreleased)
 
 *   Add `Object#blank?`
+*   Add `Module#module_parent_name` and `Module#module_parent`
 
 ## 3.0.1 (2018-07-10)
 

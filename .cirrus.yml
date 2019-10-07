@@ -1,3 +1,13 @@
+bundle_cache: &bundle_cache
+  bundle_cache:
+    folder: /usr/local/bundle
+    fingerprint_script:
+      - echo $CIRRUS_TASK_NAME:$CIRRUS_OS
+      - ruby -v
+      - cat Gemfile
+      - cat *.gemspec
+    populate_script: bundle update
+
 test_task:
   container:
     matrix:
@@ -5,13 +15,13 @@ test_task:
       image: ruby:2.4
       image: ruby:2.5
       image: ruby:2.6
-  bundle_cache:
-    folder: /usr/local/bundle
-    fingerprint_script: >
-      echo $CIRRUS_TASK_NAME:$CIRRUS_OS:$RUBY_VERSION &&
-      cat Gemfile &&
-      cat *.gemspec
-    populate_script: bundle update
+  <<: *bundle_cache
   environment:
     CODECOV_TOKEN: ENCRYPTED[3f86be6f9a8c18a9371f268d1bea98588b6ec6c930aa858ae8164cfd584db2fd4bd526654ad11222ce9aedc47bb64d2b]
   test_script: bundle exec rake
+
+rubocop_task:
+  container:
+    image: ruby:2.6
+  <<: *bundle_cache
+  rubocop_script: bundle exec rubocop

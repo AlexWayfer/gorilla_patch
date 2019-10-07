@@ -6,6 +6,7 @@ module GorillaPatch
 		refine Hash do
 			def slice(*keys, nils: false)
 				return super if defined?(super) && !nils
+
 				keys.each_with_object(self.class.new) do |k, hash|
 					hash[k] = self[k] if nils || key?(k)
 				end

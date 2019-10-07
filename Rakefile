@@ -27,8 +27,6 @@ task :release, %i[version] do |_t, args|
 		"\n"
 	).join
 
-	raise 'test'
-
 	## Commit version update
 	sh "git add #{version_file}"
 	sh "git commit -m 'Update version to #{version}'"

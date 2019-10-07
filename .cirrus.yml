@@ -4,6 +4,7 @@ test_task:
       image: ruby:2.3
       image: ruby:2.4
       image: ruby:2.5
+      image: ruby:2.6
   bundle_cache:
     folder: /usr/local/bundle
     fingerprint_script: >

@@ -4,6 +4,10 @@ describe GorillaPatch::Inflections do
 	using GorillaPatch::Inflections
 
 	describe '.acronym' do
+		it 'default acronyms are sorted' do
+			expect(described_class.acronyms).to eq described_class.acronyms.sort
+		end
+
 		it 'remembers new acronym' do
 			described_class.acronyms.push 'HMAC'
 			expect('hmac'.camelize).to eq('HMAC')

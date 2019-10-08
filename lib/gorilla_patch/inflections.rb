@@ -5,7 +5,7 @@ module GorillaPatch
 	module Inflections
 		class << self
 			def acronyms
-				@acronyms ||= %w[API HTML XML JSON SSL ID IP HTTP HTTPS DateTime]
+				@acronyms ||= %w[API DateTime HTML HTTP HTTPS ID IP JSON SSL XML]
 			end
 
 			def acronyms_regex

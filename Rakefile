@@ -1,11 +1,29 @@
 # frozen_string_literal: true
 
+require 'date'
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
 	t.verbose = false
 end
 task default: :spec
+
+TODAY = Date.today.to_s
+
+def update_changelog(changelog_file, version)
+	lines = File.readlines(changelog_file)
+	existing_line = lines.find { |line| line.start_with? "## #{version} " }
+	if existing_line
+		return if (existing_date = existing_line.match(/\((.*)\)/)[1]) == TODAY
+
+		raise "There is already #{version} version with date #{existing_date}"
+	end
+
+	File.write changelog_file, lines.insert(
+		lines.index("## master (unreleased)\n") + 2,
+		"## #{version} (#{TODAY})\n\n"
+	).join
+end
 
 task :release, %i[version] do |_t, args|
 	version = args[:version]
@@ -18,17 +36,12 @@ task :release, %i[version] do |_t, args|
 	File.write version_file, File.read(version_file).sub(/'.+'/, "'#{version}'")
 
 	## Update CHANGELOG
-	require 'date'
 	changelog_file = File.join(__dir__, 'CHANGELOG.md')
-	lines = File.readlines(changelog_file)
-	File.write changelog_file, lines.insert(
-		lines.index("## master (unreleased)\n") + 2,
-		"## #{version} (#{Date.today})\n",
-		"\n"
-	).join
+	update_changelog changelog_file, version
 
 	## Commit version update
-	sh "git add #{version_file}"
+	sh "git add #{version_file} #{changelog_file}"
+
 	sh "git commit -m 'Update version to #{version}'"
 
 	## Tag commit

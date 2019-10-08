@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+*   Fix `CHANGELOG` updating in `rake release` task
+
+## 3.2.0 (2019-10-07)
+
 *   Add `Object#blank?`
 *   Add `Module#module_parent_name` and `Module#module_parent`
 

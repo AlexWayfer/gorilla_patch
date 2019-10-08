@@ -3,6 +3,7 @@
 ## master (unreleased)
 
 *   Fix `CHANGELOG` updating in `rake release` task
+*   Add `FAQ`, `SEO` and `UTM` to default acronyms for `Inflections`
 
 ## 3.2.0 (2019-10-07)
 

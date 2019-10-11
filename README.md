@@ -2,11 +2,11 @@
 
 Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch))
 
-[![Gem Version](https://badge.fury.io/rb/gorilla_patch.svg)](https://badge.fury.io/rb/gorilla_patch)
-[![Build Status](https://api.cirrus-ci.com/github/AlexWayfer/gorilla_patch.svg?branch=master)](https://cirrus-ci.com/github/AlexWayfer/gorilla_patch/master)
-[![codecov](https://codecov.io/gh/AlexWayfer/gorilla_patch/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
-[![Depfu](https://badges.depfu.com/badges/053afaa58155d235b7fbf78e31a8908d/overview.svg)](https://depfu.com/github/AlexWayfer/gorilla_patch?project_id=5387)
-[![Code Climate](https://codeclimate.com/github/AlexWayfer/gorilla_patch/badges/gpa.svg)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
+[![Gem](https://img.shields.io/gem/v/gorilla_patch.svg?style=flat-square)](https://rubygems.org/gems/gorilla_patch)
+![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/gorilla_patch?style=flat-square)
+[![Codecov branch](https://img.shields.io/codecov/c/github/AlexWayfer/gorilla_patch/master.svg?style=flat-square)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
+![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
 
 # Installation
 

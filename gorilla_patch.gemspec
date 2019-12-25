@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 	s.add_development_dependency 'codecov', '~> 0'
 	s.add_development_dependency 'rake', '~> 13'
 	s.add_development_dependency 'rspec', '~> 3'
-	s.add_development_dependency 'rubocop', '~> 0.75.0'
+	s.add_development_dependency 'rubocop', '~> 0.78.0'
 	s.add_development_dependency 'simplecov', '~> 0'
 
 	## For Inflections testing

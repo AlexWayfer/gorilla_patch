@@ -14,6 +14,7 @@ test_task:
       image: ruby:2.4
       image: ruby:2.5
       image: ruby:2.6
+      image: ruby:2.7
   <<: *bundle_cache
   environment:
     CODECOV_TOKEN: ENCRYPTED[3f86be6f9a8c18a9371f268d1bea98588b6ec6c930aa858ae8164cfd584db2fd4bd526654ad11222ce9aedc47bb64d2b]
@@ -21,6 +22,6 @@ test_task:
 
 rubocop_task:
   container:
-    image: ruby:2.6
+    image: ruby:2.7
   <<: *bundle_cache
   rubocop_script: bundle exec rubocop

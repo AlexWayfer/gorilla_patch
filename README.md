@@ -157,14 +157,6 @@ hash.keys? :a, :b # undefined method!
 
         *   `#symbolize_keys!(deep: false)`
 
-*   **Transform**
-
-    *   **`Hash`**
-
-        *   `#transform_values`
-
-        *   `#transform_values!`
-
 *   **Truncate**
 
     *   **`String`**

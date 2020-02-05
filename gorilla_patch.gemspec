@@ -25,6 +25,6 @@ Gem::Specification.new do |s|
 	s.add_development_dependency 'simplecov', '~> 0'
 
 	## For Inflections testing
-	s.add_development_dependency 'inflecto-refinements', '~> 0'
+	s.add_development_dependency 'dry-inflector', '~> 0.2.0'
 	s.add_development_dependency 'sequel', '~> 5'
 end

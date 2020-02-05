@@ -53,19 +53,56 @@ module GorillaPatch
 				require 'sequel'
 
 				refine String do
-					Sequel::Inflections.private_instance_methods.each do |method|
-						define_method method do
-							Sequel::Inflections.instance_method(method).bind(self).call(self)
-						end
+					extend MethodsFromSequel
+
+					define_methods_from_sequel
+				end
+			end
+		end
+
+		## Module for definition methods from Sequel
+		module MethodsFromSequel
+			private
+
+			def define_methods_from_sequel
+				Sequel::Inflections.private_instance_methods.each do |method_name|
+					define_method method_name do
+						Sequel::Inflections.instance_method(method_name)
+							.bind(self).call(self)
 					end
 				end
 			end
 		end
 
-		def self.from_inflecto
-			require 'inflecto-refinements'
+		private_constant :MethodsFromSequel
 
-			Inflecto::Refinements
+		def self.from_dry_inflector
+			@from_dry_inflector ||= Module.new do
+				require 'dry/inflector'
+
+				refine String do
+					extend MethodsFromDryInflector
+
+					define_methods_from_dry_inflector
+				end
+			end
 		end
+
+		## Module for definition methods from Dry::Inflector
+		module MethodsFromDryInflector
+			private
+
+			def define_methods_from_dry_inflector
+				inflector = Dry::Inflector.new
+
+				inflector.public_methods.each do |method_name|
+					define_method method_name do
+						inflector.public_send method_name, self
+					end
+				end
+			end
+		end
+
+		private_constant :MethodsFromDryInflector
 	end
 end

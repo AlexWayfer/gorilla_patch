@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-describe 'GorillaPatch::Inflections.from_inflecto' do
-	using GorillaPatch::Inflections.from_inflecto
+describe 'GorillaPatch::Inflections.from_dry_inflector' do
+	using GorillaPatch::Inflections.from_dry_inflector
 
 	describe String do
 		let(:string) { 'GorillaPatch' }

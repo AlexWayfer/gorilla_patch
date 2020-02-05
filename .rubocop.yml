@@ -17,4 +17,4 @@ Style/SymbolProc:
     - 'lib/gorilla_patch/deep_dup.rb'
 
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4

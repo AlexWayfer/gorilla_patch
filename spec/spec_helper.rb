@@ -8,4 +8,4 @@ if ENV['CODECOV_TOKEN']
 	SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
-require 'gorilla_patch'
+require_relative '../lib/gorilla_patch'

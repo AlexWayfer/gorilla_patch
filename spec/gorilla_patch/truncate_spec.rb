@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Truncate do
-	using GorillaPatch::Truncate
+	using described_class
 
 	describe String, '#hash' do
 		let(:string) { 'Once upon a time in a world far far away' }
@@ -12,6 +12,7 @@ describe GorillaPatch::Truncate do
 			expect(string.truncate(27, separator: ' '))
 				.to eq 'Once upon a time in a...'
 		end
+
 		it do
 			expect(string.truncate(27, separator: /\s/))
 				.to eq 'Once upon a time in a...'
@@ -21,6 +22,7 @@ describe GorillaPatch::Truncate do
 			expect(string.truncate(27, omission: '... (continued)'))
 				.to eq 'Once upon a ... (continued)'
 		end
+
 		it do
 			expect(string.truncate(27, separator: ' ', omission: '... (continued)'))
 				.to eq 'Once upon a... (continued)'

@@ -2,12 +2,13 @@
 
 Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch))
 
-[![Gem](https://img.shields.io/gem/v/gorilla_patch.svg?style=flat-square)](https://rubygems.org/gems/gorilla_patch)
 ![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/gorilla_patch?style=flat-square)
 [![Codecov branch](https://img.shields.io/codecov/c/github/AlexWayfer/gorilla_patch/master.svg?style=flat-square)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
-![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
+![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)
 [![Inline docs](https://inch-ci.org/github/AlexWayfer/gorilla_patch.svg?branch=master)](https://inch-ci.org/github/AlexWayfer/gorilla_patch)
+[![license](https://img.shields.io/github/license/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://github.com/AlexWayfer/gorilla_patch/blob/master/LICENSE)
+[![Gem](https://img.shields.io/gem/v/gorilla_patch.svg?style=flat-square)](https://rubygems.org/gems/gorilla_patch)
 
 # Installation
 

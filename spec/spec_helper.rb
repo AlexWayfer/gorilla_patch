@@ -8,4 +8,6 @@ if ENV['CODECOV_TOKEN']
 	SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
+require 'pry-byebug'
+
 require_relative '../lib/gorilla_patch'

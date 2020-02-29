@@ -7,6 +7,7 @@ Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.
 [![Codecov branch](https://img.shields.io/codecov/c/github/AlexWayfer/gorilla_patch/master.svg?style=flat-square)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
 ![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
+[![Inline docs](https://inch-ci.org/github/AlexWayfer/gorilla_patch.svg?branch=master)](https://inch-ci.org/github/AlexWayfer/gorilla_patch)
 
 # Installation
 

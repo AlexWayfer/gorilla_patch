@@ -4,12 +4,14 @@ module GorillaPatch
 	## Inflections
 	module Inflections
 		class << self
+			## Set of acronyms which can be modified externally
 			def acronyms
 				@acronyms ||= %w[
 					API DateTime FAQ HTML HTTP HTTPS ID IP JSON SEO SSL UTM XML
 				]
 			end
 
+			## Regular expression for detecting known acronyms
 			def acronyms_regex
 				/(?:(?<=([A-Z\d_]))|\b)((?i)#{acronyms.join('|')})(?=\b|[^a-z])/
 			end
@@ -48,6 +50,7 @@ module GorillaPatch
 			end
 		end
 
+		## Use inflections from Sequel
 		def self.from_sequel
 			@from_sequel ||= Module.new do
 				require 'sequel'
@@ -61,6 +64,7 @@ module GorillaPatch
 		end
 
 		## Module for definition methods from Sequel
+		## https://sequel.jeremyevans.net/
 		module MethodsFromSequel
 			private
 
@@ -76,6 +80,8 @@ module GorillaPatch
 
 		private_constant :MethodsFromSequel
 
+		## Use inflections from DRY Inflector
+		## https://dry-rb.org/gems/dry-inflector/
 		def self.from_dry_inflector
 			@from_dry_inflector ||= Module.new do
 				require 'dry/inflector'

@@ -6,11 +6,6 @@ module GorillaPatch
 		refine Object do
 			def deep_dup
 				dup
-			rescue TypeError
-				# :nocov:
-				# For Ruby < 2.4: https://bugs.ruby-lang.org/issues/12979
-				self
-				# :nocov:
 			end
 		end
 
@@ -24,7 +19,7 @@ module GorillaPatch
 
 		refine Array do
 			def deep_dup
-				map { |el| el.deep_dup }
+				map(&:deep_dup)
 			end
 		end
 

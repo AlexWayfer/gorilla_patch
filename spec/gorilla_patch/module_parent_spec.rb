@@ -1,25 +1,25 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::ModuleParent do
-	using GorillaPatch::ModuleParent
+	using described_class
 
 	describe Module, '#module_parent_name' do
 		subject { module_const.module_parent_name }
 
-		context 'nested' do
+		context 'when module is nested' do
 			let(:module_const) { GorillaPatch::Namespace }
 
 			it { is_expected.to eq 'GorillaPatch' }
 		end
 
-		context 'top-level' do
+		context 'when module is top-level' do
 			let(:module_const) { GorillaPatch }
 
 			it { is_expected.to eq nil }
 		end
 
 		context 'without name' do
-			let(:module_const) { Module.new }
+			let(:module_const) { described_class.new }
 
 			it { is_expected.to eq nil }
 		end
@@ -28,20 +28,20 @@ describe GorillaPatch::ModuleParent do
 	describe Module, '#module_parent' do
 		subject { module_const.module_parent }
 
-		context 'nested' do
+		context 'when module is nested' do
 			let(:module_const) { GorillaPatch::Namespace }
 
 			it { is_expected.to eq GorillaPatch }
 		end
 
-		context 'top-level' do
+		context 'when module is top-level' do
 			let(:module_const) { GorillaPatch }
 
 			it { is_expected.to eq Object }
 		end
 
 		context 'without name' do
-			let(:module_const) { Module.new }
+			let(:module_const) { described_class.new }
 
 			it { is_expected.to eq Object }
 		end

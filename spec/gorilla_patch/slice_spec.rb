@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Slice do
-	using GorillaPatch::Slice
+	using described_class
 
 	describe Hash do
 		let(:init_hash) { { a: 1, b: 2, c: 3 } }
@@ -9,81 +9,111 @@ describe GorillaPatch::Slice do
 
 		describe '#slice' do
 			describe 'default behavior' do
-				subject { init_hash.slice(*sliced_keys) }
+				subject(:result) { init_hash.slice(*sliced_keys) }
 
 				it { is_expected.to eq(a: 1, b: 2) }
 				it { is_expected.not_to be init_hash }
 
-				if RUBY_VERSION >= '2.5'
-					it do
-						expect(init_hash).not_to receive(:key?)
-						subject
+				describe 'usage of `super` for Ruby >= 2.5' do
+					before do
+						allow(init_hash).to receive(:key?)
+						result
 					end
-				else
-					it do
-						expect(init_hash).to receive(:key?).exactly(sliced_keys.size).times
-						subject
+
+					if RUBY_VERSION >= '2.5'
+						it do
+							expect(init_hash).not_to have_received(:key?)
+						end
+					else
+						it do
+							expect(init_hash).to have_received(:key?)
+								.exactly(sliced_keys.size).times
+						end
 					end
 				end
 			end
 
 			context 'with nils' do
-				subject { init_hash.slice(*sliced_keys, nils: true) }
+				subject(:result) { init_hash.slice(*sliced_keys, nils: true) }
 
 				it { is_expected.to eq(a: 1, b: 2, x: nil) }
 				it { is_expected.not_to be init_hash }
 
-				it do
-					expect(init_hash).to receive(:[]).exactly(sliced_keys.size).times
-					subject
+				describe 'no usage of `super` even for Ruby >= 2.5' do
+					before do
+						allow(init_hash).to receive(:[])
+						result
+					end
+
+					it do
+						expect(init_hash).to have_received(:[])
+							.exactly(sliced_keys.size).times
+						result
+					end
 				end
 			end
 		end
 
 		describe '#slice!' do
 			describe 'default behavior' do
-				subject { init_hash.slice!(*sliced_keys) }
+				subject(:result) { init_hash.slice!(*sliced_keys) }
 
 				it { is_expected.to eq(c: 3) }
 				it { is_expected.not_to be init_hash }
-				it do
-					subject
-					expect(init_hash).to eq(a: 1, b: 2)
+
+				describe 'mutation of initial Hash' do
+					before do
+						result
+					end
+
+					it { expect(init_hash).to eq(a: 1, b: 2) }
 				end
 			end
 
 			context 'with nils' do
-				subject { init_hash.slice!(*sliced_keys, nils: true) }
+				subject(:result) { init_hash.slice!(*sliced_keys, nils: true) }
 
 				it { is_expected.to eq(c: 3) }
 				it { is_expected.not_to be init_hash }
-				it do
-					subject
-					expect(init_hash).to eq(a: 1, b: 2, x: nil)
+
+				describe 'mutation of initial Hash' do
+					before do
+						result
+					end
+
+					it { expect(init_hash).to eq(a: 1, b: 2, x: nil) }
 				end
 			end
 		end
 
 		describe '#slice_reverse!' do
 			describe 'default behavior' do
-				subject { init_hash.slice_reverse!(*sliced_keys) }
+				subject(:result) { init_hash.slice_reverse!(*sliced_keys) }
 
 				it { is_expected.to eq(a: 1, b: 2) }
 				it { is_expected.not_to be init_hash }
-				it do
-					subject
-					expect(init_hash).to eq(c: 3)
+
+				describe 'mutation of initial Hash' do
+					before do
+						result
+					end
+
+					it { expect(init_hash).to eq(c: 3) }
 				end
 			end
 
 			context 'with nils' do
-				subject { init_hash.slice_reverse!(*sliced_keys, nils: true) }
+				subject(:result) { init_hash.slice_reverse!(*sliced_keys, nils: true) }
 
 				it { is_expected.to eq(a: 1, b: 2, x: nil) }
 				it { is_expected.not_to be init_hash }
-				it do
-					subject
-					expect(init_hash).to eq(c: 3)
+
+				describe 'mutation of initial Hash' do
+					before do
+						result
+					end
+
+					it { expect(init_hash).to eq(c: 3) }
 				end
 			end
 		end

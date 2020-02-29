@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Symbolize do
-	using GorillaPatch::Symbolize
+	using described_class
 
 	describe Hash do
 		let(:hash) { { 'a' => 1, 'b' => [{ 'c' => 3 }] } }
+
 		describe 'symbolize_keys' do
 			context 'when deep false' do
 				it { expect(hash.symbolize_keys).to eq(a: 1, b: [{ 'c' => 3 }]) }

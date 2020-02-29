@@ -1,27 +1,32 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Cover do
-	using GorillaPatch::Cover
+	using described_class
 
 	describe Range, '#cover?' do
-		subject { (4..8).cover?(value) }
+		subject(:result) { (4..8).cover?(value) }
 
 		context 'with other Range' do
-			before do
-				if RUBY_VERSION >= '2.6'
-					expect(value).not_to receive(:first)
-				else
-					expect(value).to receive(:first).once.and_call_original
-				end
-			end
-
-			context 'that covered' do
+			context 'when covers' do
 				let(:value) { 5..7 }
 
 				it { is_expected.to be true }
+
+				describe 'usage of `super` for Ruby >= 2.6' do
+					before do
+						allow(value).to receive(:first).and_call_original
+						result
+					end
+
+					if RUBY_VERSION >= '2.6'
+						it { expect(value).not_to have_received(:first) }
+					else
+						it { expect(value).to have_received(:first).once }
+					end
+				end
 			end
 
-			context 'that not covered' do
+			context 'when does not cover' do
 				let(:value) { 2..7 }
 
 				it { is_expected.to be false }
@@ -29,13 +34,13 @@ describe GorillaPatch::Cover do
 		end
 
 		context 'with standard types (Integer)' do
-			context 'that covered' do
+			context 'when covers' do
 				let(:value) { 5 }
 
 				it { is_expected.to be true }
 			end
 
-			context 'that not covered' do
+			context 'when does not cover' do
 				let(:value) { 2 }
 
 				it { is_expected.to be false }

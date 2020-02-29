@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Namespace do
-	using GorillaPatch::Namespace
+	using described_class
 
 	describe String, '#demodulize' do
 		it { expect('Foo::Bar::Baz'.demodulize).to eq 'Baz' }
@@ -14,12 +14,14 @@ describe GorillaPatch::Namespace do
 		it { expect(GorillaPatch::Namespace.demodulize).to eq 'Namespace' }
 		it { expect(GorillaPatch.demodulize).to eq 'GorillaPatch' }
 
-		it 'should work for class without name' do
-			expect { Module.new.demodulize }.to_not raise_error
+		it 'works for class without name' do
+			expect { described_class.new.demodulize }.not_to raise_error
 		end
 	end
 
 	describe Class, '#demodulize' do
+		## Impossible to use `using` right after `stub_const` :angry:
+		# rubocop:disable RSpec/LeakyConstantDeclaration
 		class Class
 			private
 
@@ -29,6 +31,7 @@ describe GorillaPatch::Namespace do
 		module GorillaPatch; class NamespaceClass; end; end
 
 		using GorillaPatch::Namespace
+		# rubocop:enable RSpec/LeakyConstantDeclaration
 
 		it do
 			expect(GorillaPatch::NamespaceClass.demodulize).to eq 'NamespaceClass'
@@ -48,8 +51,8 @@ describe GorillaPatch::Namespace do
 		it { expect(GorillaPatch::Namespace.deconstantize).to eq 'GorillaPatch' }
 		it { expect(GorillaPatch.deconstantize).to eq '' }
 
-		it 'should work for class without name' do
-			expect { Module.new.deconstantize }.to_not raise_error
+		it 'works for class without name' do
+			expect { described_class.new.deconstantize }.not_to raise_error
 		end
 	end
 end

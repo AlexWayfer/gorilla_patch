@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::DeepDup do
-	using GorillaPatch::DeepDup
+	using described_class
 
 	describe String do
 		let!(:string) { 'String' }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Blank do
-	using GorillaPatch::Blank
+	using described_class
 
 	describe String, '#blank?' do
 		it { expect(''.blank?).to be true }
@@ -15,11 +15,11 @@ describe GorillaPatch::Blank do
 	end
 
 	describe Object, '#blank?' do
-		let(:object) { object_class.new }
-
 		subject { object.blank? }
 
-		context 'object with `#empty?` method' do
+		let(:object) { object_class.new }
+
+		context 'when object has `#empty?` method' do
 			let(:object_class) do
 				Class.new(Object) do
 					def empty?
@@ -31,7 +31,7 @@ describe GorillaPatch::Blank do
 			it { is_expected.to be true }
 		end
 
-		context 'object without `#empty?` method' do
+		context 'when object has no `#empty?` method' do
 			let(:object_class) do
 				Class.new(Object) do
 					undef_method :empty? if respond_to? :empty?
@@ -43,55 +43,59 @@ describe GorillaPatch::Blank do
 	end
 
 	describe Array do
-		let(:array) do
+		subject(:array) do
 			[1, nil, '', 'a', [''], [nil, '', 3], {}, { a: nil, b: '', c: 3 }, 1..10]
 		end
 
 		describe 'reject_blank_strings' do
-			it do
-				expect(array.reject_blank_strings).to eq(
-					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10]
-				)
-			end
-			it { expect(array.reject_blank_strings).not_to be array }
+			subject { super().reject_blank_strings }
+
+			it { is_expected.to eq [1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10] }
+
+			it { is_expected.not_to be array }
 		end
 
 		describe 'reject_blank_strings!' do
-			it do
-				expect(array.reject_blank_strings!).to eq(
-					[1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10]
-				)
-			end
-			it { expect(array.reject_blank_strings!).to be array }
+			subject { super().reject_blank_strings! }
+
+			it { is_expected.to eq [1, nil, 'a', [nil, 3], { a: nil, c: 3 }, 1..10] }
+
+			it { is_expected.to be array }
 		end
 
 		describe 'nilify_blank_strings' do
-			it do
-				expect(array.nilify_blank_strings).to eq(
-					[
-						1, nil, nil, 'a', [nil], [nil, nil, 3], {},
-						{ a: nil, b: nil, c: 3 }, 1..10
-					]
-				)
+			subject { super().nilify_blank_strings }
+
+			let(:expected_result) do
+				[
+					1, nil, nil, 'a', [nil], [nil, nil, 3], {},
+					{ a: nil, b: nil, c: 3 }, 1..10
+				]
 			end
-			it { expect(array.nilify_blank_strings).not_to be array }
+
+			it { is_expected.to eq expected_result }
+
+			it { is_expected.not_to be array }
 		end
 
 		describe 'nilify_blank_strings!' do
-			it do
-				expect(array.nilify_blank_strings!).to eq(
-					[
-						1, nil, nil, 'a', [nil], [nil, nil, 3], {},
-						{ a: nil, b: nil, c: 3 }, 1..10
-					]
-				)
+			subject { super().nilify_blank_strings! }
+
+			let(:expected_result) do
+				[
+					1, nil, nil, 'a', [nil], [nil, nil, 3], {},
+					{ a: nil, b: nil, c: 3 }, 1..10
+				]
 			end
-			it { expect(array.nilify_blank_strings!).to be array }
+
+			it { is_expected.to eq expected_result }
+
+			it { is_expected.to be array }
 		end
 	end
 
 	describe Hash do
-		let(:hash) do
+		subject(:hash) do
 			{
 				a: 1, b: '', c: '3',
 				d: [], e: [nil, '', 3],
@@ -100,43 +104,51 @@ describe GorillaPatch::Blank do
 		end
 
 		describe 'reject_blank_strings' do
-			it do
-				expect(hash.reject_blank_strings).to eq(
-					a: 1, c: '3', e: [nil, 3], g: { a: nil, c: 3 }
-				)
-			end
-			it { expect(hash.reject_blank_strings).not_to be hash }
+			subject { super().reject_blank_strings }
+
+			it { is_expected.to eq(a: 1, c: '3', e: [nil, 3], g: { a: nil, c: 3 }) }
+
+			it { is_expected.not_to be hash }
 		end
 
 		describe 'reject_blank_strings!' do
-			it do
-				expect(hash.reject_blank_strings!).to eq(
-					a: 1, c: '3', e: [nil, 3], g: { a: nil, c: 3 }
-				)
-			end
-			it { expect(hash.reject_blank_strings!).to be hash }
+			subject { super().reject_blank_strings! }
+
+			it { is_expected.to eq(a: 1, c: '3', e: [nil, 3], g: { a: nil, c: 3 }) }
+
+			it { is_expected.to be hash }
 		end
 
 		describe 'nilify_blank_strings' do
-			it do
-				expect(hash.nilify_blank_strings).to eq(
+			subject { super().nilify_blank_strings }
+
+			let(:expected_result) do
+				{
 					a: 1, b: nil, c: '3',
-					d: [], e: [nil, nil, 3],
-					f: {}, g: { a: nil, b: nil, c: 3 }
-				)
+					d: [], e: [nil, nil, 3], f: {},
+					g: { a: nil, b: nil, c: 3 }
+				}
 			end
-			it { expect(hash.nilify_blank_strings).not_to be hash }
+
+			it { is_expected.to eq expected_result }
+
+			it { is_expected.not_to be hash }
 		end
 
 		describe 'nilify_blank_strings!' do
-			it do
-				expect(hash.nilify_blank_strings!).to eq(
+			subject { super().nilify_blank_strings! }
+
+			let(:expected_result) do
+				{
 					a: 1, b: nil, c: '3',
-					d: [], e: [nil, nil, 3],
-					f: {}, g: { a: nil, b: nil, c: 3 }
-				)
+					d: [], e: [nil, nil, 3], f: {},
+					g: { a: nil, b: nil, c: 3 }
+				}
 			end
-			it { expect(hash.nilify_blank_strings!).to be hash }
+
+			it { is_expected.to eq expected_result }
+
+			it { is_expected.to be hash }
 		end
 	end
 end

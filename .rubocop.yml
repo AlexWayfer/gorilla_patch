@@ -1,9 +1,31 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
 Layout/Tab:
   Enabled: false
 Layout/IndentationWidth:
   Width: 1
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
+## https://github.com/JuanitoFatas/fast-ruby/issues/123
+Performance/Casecmp:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+RSpec/DescribeClass:
+  Exclude:
+    - spec/gorilla_patch/inflections/dry_inflector_spec.rb
+    - spec/gorilla_patch/inflections/sequel_spec.rb
 
 Metrics/BlockLength:
   ExcludedMethods:

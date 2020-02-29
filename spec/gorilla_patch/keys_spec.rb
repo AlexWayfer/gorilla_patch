@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Keys do
-	using GorillaPatch::Keys
+	using described_class
 
 	describe Hash, '#keys?' do
 		let(:hash) { { a: 1, b: 2, c: 3 } }

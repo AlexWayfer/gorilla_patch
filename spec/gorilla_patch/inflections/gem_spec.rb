@@ -1,25 +1,31 @@
 # frozen_string_literal: true
 
 describe GorillaPatch::Inflections do
-	using GorillaPatch::Inflections
+	using described_class
 
 	describe '.acronym' do
 		it 'default acronyms are sorted' do
 			expect(described_class.acronyms).to eq described_class.acronyms.sort
 		end
 
-		it 'remembers new acronym' do
-			described_class.acronyms.push 'HMAC'
-			expect('hmac'.camelize).to eq('HMAC')
-			expect('Hmac'.camelize).to eq('HMAC')
+		describe 'adding new acronym' do
+			before do
+				described_class.acronyms.push 'HMAC'
+			end
+
+			it { expect('hmac'.camelize).to eq('HMAC') }
+			it { expect('Hmac'.camelize).to eq('HMAC') }
 		end
 
-		it 'works with not only capsed' do
-			described_class.acronyms.push 'McDonald'
-			expect('McDonald'.underscore).to eq('mcdonald')
-			expect('API::McDonald'.underscore).to eq('api/mcdonald')
-			expect('McDonaldCompany'.underscore).to eq('mcdonald_company')
-			expect('mcdonald'.camelize).to eq('McDonald')
+		describe 'processing not only capsed' do
+			before do
+				described_class.acronyms.push 'McDonald'
+			end
+
+			it { expect('McDonald'.underscore).to eq('mcdonald') }
+			it { expect('API::McDonald'.underscore).to eq('api/mcdonald') }
+			it { expect('McDonaldCompany'.underscore).to eq('mcdonald_company') }
+			it { expect('mcdonald'.camelize).to eq('McDonald') }
 		end
 	end
 
@@ -31,7 +37,7 @@ describe GorillaPatch::Inflections do
 			it { expect('camelCase'.underscore).to eq 'camel_case' }
 			it { expect('kebab-case'.underscore).to eq 'kebab_case' }
 			it { expect('snake_case'.underscore).to eq 'snake_case' }
-			it { expect('foo/snake_case').to eq 'foo/snake_case' }
+			it { expect('foo/snake_case'.underscore).to eq 'foo/snake_case' }
 			it { expect('JSON'.underscore).to eq('json') }
 			it { expect('HTTP::Get'.underscore).to eq('http/get') }
 			it { expect('HTTPError'.underscore).to eq('http_error') }

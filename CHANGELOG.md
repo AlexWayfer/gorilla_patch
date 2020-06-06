@@ -2,6 +2,16 @@
 
 ## master (unreleased)
 
+## 4.0.0 (2020-06-06)
+
+*   Replace `inflecto` with `dry-inflector` (`.from_dry_inflector`)
+*   Drop unsupported Ruby 2.3 version
+*   Remove `GorillaPatch::Transform` (its methods in stdlib of Ruby >= 2.4)
+*   Improve dependencies versions locks
+*   Improve code style via new RuboCop cops
+*   Write more documentation
+*   Create LICENSE file
+
 ## 3.2.1 (2019-10-08)
 
 *   Fix `CHANGELOG` updating in `rake release` task

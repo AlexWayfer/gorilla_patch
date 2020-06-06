@@ -39,6 +39,9 @@ task :release, %i[version] do |_t, args|
 	changelog_file = File.join(__dir__, 'CHANGELOG.md')
 	update_changelog changelog_file, version
 
+	## Checkout to a new git branch, required for protected `mastrer` with CI
+	sh "git switch -c v#{version}"
+
 	## Commit version update
 	sh "git add #{version_file} #{changelog_file}"
 
@@ -47,15 +50,18 @@ task :release, %i[version] do |_t, args|
 	## Tag commit
 	sh "git tag -a v#{version} -m 'Version #{version}'"
 
+	## Build new gem file
+	gemspec_file = Dir[File.join(__dir__, '*.gemspec')].first
+	sh "gem build #{gemspec_file}"
+
+	STDOUT.puts 'Please, validate files and commits before pushing.'
+	STDIN.gets
+
 	## Push commit
 	sh 'git push'
 
 	## Push tags
 	sh 'git push --tags'
-
-	## Build new gem file
-	gemspec_file = Dir[File.join(__dir__, '*.gemspec')].first
-	sh "gem build #{gemspec_file}"
 
 	## Push new gem file
 	gem_file = Dir[File.join(__dir__, "*-#{version}.gem")].first

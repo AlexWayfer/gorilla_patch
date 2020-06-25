@@ -8,9 +8,8 @@ module GorillaPatch
 				return dup if length <= position
 
 				stop = position - omission.length
-				if separator.is_a?(Regexp) || !separator.empty?
-					stop = rindex(separator, stop)
-				end
+				stop = rindex(separator, stop) if separator.is_a?(Regexp) || !separator.empty?
+
 				"#{self[0, stop]}#{omission}"
 			end
 		end

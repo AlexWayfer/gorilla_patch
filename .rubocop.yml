@@ -6,6 +6,8 @@ Layout/IndentationStyle:
   EnforcedStyle: tabs
 Layout/IndentationWidth:
   Width: 1
+Layout/LineLength:
+  Max: 100
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Layout/SpaceAroundMethodCallOperator:
@@ -17,6 +19,10 @@ Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
   Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
 
 Style/HashEachMethods:
   Enabled: true
@@ -27,6 +33,10 @@ Style/HashTransformValues:
 Style/ExponentialNotation:
   Enabled: true
 Style/SlicingWithRange:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
   Enabled: true
 
 ## https://github.com/JuanitoFatas/fast-ruby/issues/123

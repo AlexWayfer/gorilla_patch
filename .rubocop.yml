@@ -38,6 +38,8 @@ Style/RedundantRegexpCharacterClass:
   Enabled: true
 Style/RedundantRegexpEscape:
   Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
 
 ## https://github.com/JuanitoFatas/fast-ruby/issues/123
 Performance/Casecmp:

@@ -1,14 +1,14 @@
 # Gorilla Patch
 
-Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch))
-
-![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/gorilla_patch?style=flat-square)
+[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/gorilla_patch?style=flat-square)](https://cirrus-ci.com/github/AlexWayfer/gorilla_patch)
 [![Codecov branch](https://img.shields.io/codecov/c/github/AlexWayfer/gorilla_patch/master.svg?style=flat-square)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
-![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)
+[![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)](https://depfu.com/repos/github/AlexWayfer/gorilla_patch)
 [![Inline docs](https://inch-ci.org/github/AlexWayfer/gorilla_patch.svg?branch=master)](https://inch-ci.org/github/AlexWayfer/gorilla_patch)
-[![license](https://img.shields.io/github/license/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://github.com/AlexWayfer/gorilla_patch/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://github.com/AlexWayfer/gorilla_patch/blob/master/LICENSE.txt)
 [![Gem](https://img.shields.io/gem/v/gorilla_patch.svg?style=flat-square)](https://rubygems.org/gems/gorilla_patch)
+
+Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch)).
 
 # Installation
 
@@ -170,3 +170,23 @@ hash.keys? :a, :b # undefined method!
 ```
 $ rake spec
 ```
+
+## Development
+
+After checking out the repo, run `bundle install` to install dependencies.
+
+Then, run `toys rspec` to run the tests.
+
+To install this gem onto your local machine, run `toys gem install`.
+
+To release a new version, run `toys gem release %version%`.
+See how it works [here](https://github.com/AlexWayfer/gem_toys#release).
+
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/AlexWayfer/gorilla_patch).
+
+## License
+
+The gem is available as open source under the terms of the
+[MIT License](https://opensource.org/licenses/MIT).

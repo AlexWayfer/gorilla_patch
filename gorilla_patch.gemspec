@@ -1,32 +1,46 @@
 # frozen_string_literal: true
 
-require 'date'
 require_relative 'lib/gorilla_patch/version'
 
-Gem::Specification.new do |s|
-	s.name          = 'gorilla_patch'
-	s.version       = GorillaPatch::VERSION
-	s.date          = Date.today.to_s
-	s.summary       = 'Refining core classes'
-	s.description   = 'Refine Ruby Core classes with methods like Active Support.'
-	s.authors       = ['Alexander Popov']
-	s.email         = 'alex.wayfer@gmail.com'
-	s.files = Dir[File.join('lib', '**', '{*,.*}')]
-	s.homepage      = 'https://github.com/AlexWayfer/gorilla_patch'
-	s.license       = 'MIT'
+Gem::Specification.new do |spec|
+	spec.name          = 'gorilla_patch'
+	spec.version       = GorillaPatch::VERSION
+	spec.summary       = 'Refining core classes'
+	spec.description   = 'Refine Ruby Core classes with methods like Active Support.'
+	spec.authors       = ['Alexander Popov']
+	spec.email         = 'alex.wayfer@gmail.com'
+	spec.license       = 'MIT'
 
-	s.required_ruby_version = '>= 2.4.0'
+	source_code_uri = 'https://github.com/AlexWayfer/gorilla_patch'
 
-	s.add_development_dependency 'codecov', '~> 0.1.0'
-	s.add_development_dependency 'pry-byebug', '~> 3.0'
-	s.add_development_dependency 'rake', '~> 13.0'
-	s.add_development_dependency 'rspec', '~> 3.0'
-	s.add_development_dependency 'rubocop', '~> 0.86.0'
-	s.add_development_dependency 'rubocop-performance', '~> 1.0'
-	s.add_development_dependency 'rubocop-rspec', '~> 1.0'
-	s.add_development_dependency 'simplecov', '~> 0.18.0'
+	spec.homepage = source_code_uri
+
+	spec.metadata['source_code_uri'] = source_code_uri
+
+	spec.metadata['homepage_uri'] = spec.homepage
+
+	spec.metadata['changelog_uri'] =
+		'https://github.com/AlexWayfer/gorilla_patch/blob/master/CHANGELOG.md'
+
+	spec.files = Dir['lib/**/*.rb', 'README.md', 'LICENSE.txt', 'CHANGELOG.md']
+
+	spec.required_ruby_version = '>= 2.4.0'
+
+	spec.add_development_dependency 'pry-byebug', '~> 3.9'
+
+	spec.add_development_dependency 'bundler', '~> 2.0'
+	spec.add_development_dependency 'gem_toys', '~> 0.3.0'
+	spec.add_development_dependency 'toys', '~> 0.10.0'
+
+	spec.add_development_dependency 'codecov', '~> 0.2.0'
+	spec.add_development_dependency 'rspec', '~> 3.9'
+	spec.add_development_dependency 'simplecov', '~> 0.18.0'
+
+	spec.add_development_dependency 'rubocop', '~> 0.87.0'
+	spec.add_development_dependency 'rubocop-performance', '~> 1.0'
+	spec.add_development_dependency 'rubocop-rspec', '~> 1.0'
 
 	## For Inflections testing
-	s.add_development_dependency 'dry-inflector', '~> 0.2.0'
-	s.add_development_dependency 'sequel', '~> 5.0'
+	spec.add_development_dependency 'dry-inflector', '~> 0.2.0'
+	spec.add_development_dependency 'sequel', '~> 5.0'
 end

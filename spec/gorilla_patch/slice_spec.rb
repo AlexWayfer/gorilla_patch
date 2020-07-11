@@ -21,14 +21,9 @@ describe GorillaPatch::Slice do
 					end
 
 					if RUBY_VERSION >= '2.5'
-						it do
-							expect(init_hash).not_to have_received(:key?)
-						end
+						it { expect(init_hash).not_to have_received(:key?) }
 					else
-						it do
-							expect(init_hash).to have_received(:key?)
-								.exactly(sliced_keys.size).times
-						end
+						it { expect(init_hash).to have_received(:key?).exactly(sliced_keys.size).times }
 					end
 				end
 			end
@@ -46,8 +41,7 @@ describe GorillaPatch::Slice do
 					end
 
 					it do
-						expect(init_hash).to have_received(:[])
-							.exactly(sliced_keys.size).times
+						expect(init_hash).to have_received(:[]).exactly(sliced_keys.size).times
 						result
 					end
 				end

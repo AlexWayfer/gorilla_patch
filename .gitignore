@@ -1,8 +1,9 @@
-*.gem
-coverage/
-
 Gemfile.lock
-.ruby-version
 
-*.bak
-.test.rb
+/node_modules/
+package-lock.json
+yarn.lock
+
+/coverage/
+
+/pkg/

@@ -7,7 +7,7 @@ module GorillaPatch
 			## Set of acronyms which can be modified externally
 			def acronyms
 				@acronyms ||= %w[
-					API DateTime FAQ HTML HTTP HTTPS ID IP JSON SEO SSL UTM XML
+					API CLI DateTime FAQ HTML HTTP HTTPS ID IP JSON SEO SSL UTM XML
 				]
 			end
 

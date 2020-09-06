@@ -14,6 +14,8 @@ describe GorillaPatch::Slice do
 				it { is_expected.to eq(a: 1, b: 2) }
 				it { is_expected.not_to be init_hash }
 
+				## https://github.com/rubocop-hq/rubocop-rspec/pull/1018
+				# rubocop:disable RSpec/EmptyExampleGroup
 				describe 'usage of `super` for Ruby >= 2.5' do
 					before do
 						allow(init_hash).to receive(:key?)
@@ -26,6 +28,7 @@ describe GorillaPatch::Slice do
 						it { expect(init_hash).to have_received(:key?).exactly(sliced_keys.size).times }
 					end
 				end
+				# rubocop:enable RSpec/EmptyExampleGroup
 			end
 
 			context 'with nils' do

@@ -10,7 +10,7 @@
 
 Ruby Gem for refine Ruby Core classes (like [Monkey patch](https://en.wikipedia.org/wiki/Monkey_patch)).
 
-# Installation
+## Installation
 
 ```bash
 $ gem install gorilla_patch
@@ -23,7 +23,7 @@ or with `bundler`:
 gem 'gorilla_patch'
 ```
 
-# Usage
+## Usage
 
 ```ruby
 require 'gorilla_patch' # or 'gorilla_patch/keys' for specific functionallity
@@ -41,11 +41,11 @@ end
 hash.keys? :a, :b # undefined method!
 ```
 
-## What is `using`?
+### What is `using`?
 
 [It's standard feature](http://ruby-doc.org/core/doc/syntax/refinements_rdoc.html).
 
-# Methods
+## Methods
 
 *   **Blank**
 
@@ -165,7 +165,7 @@ hash.keys? :a, :b # undefined method!
 
         *   `#truncate(position, separator: '', omission: '...')`
 
-# Testing
+## Testing
 
 ```
 $ rake spec

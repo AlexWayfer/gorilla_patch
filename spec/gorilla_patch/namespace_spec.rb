@@ -22,6 +22,7 @@ describe GorillaPatch::Namespace do
 	describe Class, '#demodulize' do
 		## Impossible to use `using` right after `stub_const` :angry:
 		# rubocop:disable RSpec/LeakyConstantDeclaration
+		# rubocop:disable Lint/ConstantDefinitionInBlock
 		class Class
 			private
 
@@ -32,6 +33,7 @@ describe GorillaPatch::Namespace do
 
 		using GorillaPatch::Namespace
 		# rubocop:enable RSpec/LeakyConstantDeclaration
+		# rubocop:enable Lint/ConstantDefinitionInBlock
 
 		it do
 			expect(GorillaPatch::NamespaceClass.demodulize).to eq 'NamespaceClass'

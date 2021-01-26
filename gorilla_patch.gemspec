@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
 	spec.add_development_dependency 'rubocop', '~> 1.8'
 	spec.add_development_dependency 'rubocop-performance', '~> 1.0'
 	spec.add_development_dependency 'rubocop-rspec', '~> 2.0'
-	spec.add_development_dependency 'rubocop-sequel', '~> 0.1.0'
+	spec.add_development_dependency 'rubocop-sequel', '~> 0.2.0'
 
 	## For Inflections testing
 	spec.add_development_dependency 'dry-inflector', '~> 0.2.0'

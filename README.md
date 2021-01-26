@@ -107,11 +107,11 @@ hash.keys? :a, :b # undefined method!
 
 *   **Inflections**
 
-    * `.acronyms`
+    *   `.acronyms`
 
-    * `.from_sequel`
+    *   `.from_sequel`
 
-    * `.from_inflecto`
+    *   `.from_inflecto`
 
     *   **`String`**, **`Module`**
 

@@ -8,7 +8,7 @@ describe GorillaPatch::Cover do
 
 		context 'with other Range' do
 			context 'when covers' do
-				let(:value) { 5..7 }
+				let(:value) { (5..7).dup }
 
 				it { is_expected.to be true }
 

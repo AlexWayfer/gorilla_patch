@@ -1,6 +1,7 @@
 require:
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-sequel
 
 Layout/IndentationStyle:
   EnforcedStyle: tabs
@@ -41,7 +42,7 @@ RSpec/DescribeClass:
     - spec/gorilla_patch/inflections/sequel_spec.rb
 
 Metrics/BlockLength:
-  ExcludedMethods:
+  IgnoredMethods:
     - refine
   Exclude:
     - '*.gemspec'

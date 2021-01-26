@@ -12,8 +12,6 @@ describe GorillaPatch::Cover do
 
 				it { is_expected.to be true }
 
-				## https://github.com/rubocop-hq/rubocop-rspec/pull/1018
-				# rubocop:disable RSpec/EmptyExampleGroup
 				describe 'usage of `super` for Ruby >= 2.6' do
 					before do
 						allow(value).to receive(:first).and_call_original
@@ -26,7 +24,6 @@ describe GorillaPatch::Cover do
 						it { expect(value).to have_received(:first).once }
 					end
 				end
-				# rubocop:enable RSpec/EmptyExampleGroup
 			end
 
 			context 'when does not cover' do

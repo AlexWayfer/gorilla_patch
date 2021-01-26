@@ -29,7 +29,9 @@ describe GorillaPatch::Namespace do
 			def demodulize; end
 		end
 
+		# rubocop:disable Lint/EmptyClass
 		module GorillaPatch; class NamespaceClass; end; end
+		# rubocop:enable Lint/EmptyClass
 
 		using GorillaPatch::Namespace
 		# rubocop:enable RSpec/LeakyConstantDeclaration

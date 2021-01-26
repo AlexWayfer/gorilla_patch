@@ -28,7 +28,7 @@ module GorillaPatch
 				self[other_key] =
 					if self_value.is_a?(Hash) && other_value.is_a?(Hash)
 						self_value.deep_merge!(other_value, &block)
-					elsif block_given? && key?(other_key)
+					elsif block && key?(other_key)
 						yield(other_key, self_value, other_value)
 					else
 						other_value

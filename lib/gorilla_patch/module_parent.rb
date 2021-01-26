@@ -8,7 +8,7 @@ module GorillaPatch
 				if defined?(@module_parent_name)
 					@module_parent_name
 				else
-					module_parent_name = name =~ /::[^:]+\Z/ ? $`.freeze : nil
+					module_parent_name = name =~ /::[^:]+\Z/ ? Regexp.last_match.pre_match : nil
 					@module_parent_name = module_parent_name unless frozen?
 					module_parent_name
 				end

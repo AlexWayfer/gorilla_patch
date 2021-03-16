@@ -3,8 +3,8 @@
 module GorillaPatch
 	## Adding include methods
 	module Cover
-		refine Range do
-			if RUBY_VERSION < '2.6'
+		if RUBY_VERSION < '2.6'
+			refine Range do
 				def cover?(value)
 					return super unless value.is_a?(Range)
 

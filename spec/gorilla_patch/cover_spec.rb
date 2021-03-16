@@ -8,6 +8,7 @@ describe GorillaPatch::Cover do
 
 		context 'with other Range' do
 			context 'when covers' do
+				## https://bugs.ruby-lang.org/issues/15504#note-16
 				let(:value) { (5..7).dup }
 
 				it { is_expected.to be true }

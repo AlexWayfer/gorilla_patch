@@ -23,6 +23,17 @@ module GorillaPatch
 			end
 		end
 
+		refine Module do
+			def deep_dup
+				result = super
+				constants(false).each do |constant|
+					result.send :remove_const, constant
+					result.const_set constant, const_get(constant).deep_dup
+				end
+				result
+			end
+		end
+
 		require 'delegate'
 
 		refine Delegator do

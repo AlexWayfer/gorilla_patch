@@ -79,7 +79,7 @@ hash.keys? :a, :b # undefined method!
 
 *   **DeepDup**
 
-    *   **`Object`**, **`Hash`**, **`Array`**, **`Delegator`**
+    *   **`Object`**, **`Hash`**, **`Array`**, **`Module`**, **`Delegator`**
 
         *   `#deep_dup`
 

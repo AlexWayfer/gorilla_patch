@@ -35,6 +35,33 @@ describe GorillaPatch::DeepDup do
 		it { expect(array.deep_dup[2]).not_to be array[2] }
 	end
 
+	describe Module do
+		const_set :InitialModule, (Module.new do
+			const_set :NestedModule, (Module.new do
+				const_set :EndPointClass, (Class.new do
+					## nothing needed
+				end)
+			end)
+		end)
+
+		const_set :ResultModule, self::InitialModule.deep_dup
+
+		it do
+			expect(self.class::ResultModule.name)
+				.to eq "#{self.class}::ResultModule"
+		end
+
+		it do
+			expect(self.class::ResultModule::NestedModule.name)
+				.to eq "#{self.class}::ResultModule::NestedModule"
+		end
+
+		it do
+			expect(self.class::ResultModule::NestedModule::EndPointClass.name)
+				.to eq "#{self.class}::ResultModule::NestedModule::EndPointClass"
+		end
+	end
+
 	require 'delegate'
 
 	describe Delegator do

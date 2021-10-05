@@ -111,7 +111,7 @@ hash.keys? :a, :b # undefined method!
 
     *   `.from_sequel`
 
-    *   `.from_inflecto`
+    *   `.from_dry_inflector`
 
     *   **`String`**, **`Module`**
 

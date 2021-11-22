@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 	spec.metadata['homepage_uri'] = spec.homepage
 
 	spec.metadata['changelog_uri'] =
-		'https://github.com/AlexWayfer/gorilla_patch/blob/master/CHANGELOG.md'
+		'https://github.com/AlexWayfer/gorilla_patch/blob/main/CHANGELOG.md'
 
 	spec.files = Dir['lib/**/*.rb', 'README.md', 'LICENSE.txt', 'CHANGELOG.md']
 

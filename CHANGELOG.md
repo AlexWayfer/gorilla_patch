@@ -1,6 +1,6 @@
 # Changelog
 
-## master (unreleased)
+## Unreleased
 
 ## 4.0.0 (2020-06-06)
 

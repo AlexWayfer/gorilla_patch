@@ -13,19 +13,6 @@ describe GorillaPatch::Slice do
 
 				it { is_expected.to eq(a: 1, b: 2) }
 				it { is_expected.not_to be init_hash }
-
-				describe 'usage of `super` for Ruby >= 2.5' do
-					before do
-						allow(init_hash).to receive(:key?)
-						result
-					end
-
-					if RUBY_VERSION >= '2.5'
-						it { expect(init_hash).not_to have_received(:key?) }
-					else
-						it { expect(init_hash).to have_received(:key?).exactly(sliced_keys.size).times }
-					end
-				end
 			end
 
 			context 'with nils' do
@@ -33,18 +20,6 @@ describe GorillaPatch::Slice do
 
 				it { is_expected.to eq(a: 1, b: 2, x: nil) }
 				it { is_expected.not_to be init_hash }
-
-				describe 'no usage of `super` even for Ruby >= 2.5' do
-					before do
-						allow(init_hash).to receive(:[])
-						result
-					end
-
-					it do
-						expect(init_hash).to have_received(:[]).exactly(sliced_keys.size).times
-						result
-					end
-				end
 			end
 		end
 

@@ -71,12 +71,6 @@ hash.keys? :a, :b # undefined method!
 
         *   `#compact!`
 
-*   **Cover**
-
-    *   **`Range`**
-
-        *   `#cover?(value)`
-
 *   **DeepDup**
 
     *   **`Object`**, **`Hash`**, **`Array`**, **`Module`**, **`Delegator`**

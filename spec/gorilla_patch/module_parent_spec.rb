@@ -15,13 +15,13 @@ describe GorillaPatch::ModuleParent do
 		context 'when module is top-level' do
 			let(:module_const) { GorillaPatch }
 
-			it { is_expected.to eq nil }
+			it { is_expected.to be_nil }
 		end
 
 		context 'without name' do
 			let(:module_const) { described_class.new }
 
-			it { is_expected.to eq nil }
+			it { is_expected.to be_nil }
 		end
 	end
 

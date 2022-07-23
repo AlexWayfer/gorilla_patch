@@ -71,8 +71,7 @@ module GorillaPatch
 			def define_methods_from_sequel
 				Sequel::Inflections.private_instance_methods.each do |method_name|
 					define_method method_name do
-						Sequel::Inflections.instance_method(method_name)
-							.bind(self).call(self)
+						Sequel::Inflections.instance_method(method_name).bind_call(self, self)
 					end
 				end
 			end

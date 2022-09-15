@@ -49,5 +49,5 @@ Metrics/BlockLength:
     - spec/**/*.rb
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   NewCops: enable

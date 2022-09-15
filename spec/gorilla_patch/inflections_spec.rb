@@ -5,12 +5,12 @@ describe GorillaPatch::Inflections do
 
 	describe '.acronym' do
 		it 'default acronyms are sorted' do
-			expect(described_class.acronyms).to eq described_class.acronyms.sort
+			expect(described_class.acronyms).to eq described_class.acronyms.sort.to_set
 		end
 
 		describe 'adding new acronym' do
 			before do
-				described_class.acronyms.push 'HMAC'
+				described_class.acronyms.add 'HMAC'
 			end
 
 			it { expect('hmac'.camelize).to eq('HMAC') }
@@ -19,7 +19,7 @@ describe GorillaPatch::Inflections do
 
 		describe 'processing not only capsed' do
 			before do
-				described_class.acronyms.push 'McDonald'
+				described_class.acronyms.add 'McDonald'
 			end
 
 			it { expect('McDonald'.underscore).to eq('mcdonald') }

@@ -6,9 +6,9 @@ module GorillaPatch
 		class << self
 			## Set of acronyms which can be modified externally
 			def acronyms
-				@acronyms ||= %w[
-					API CLI DB DateTime FAQ HTML HTTP HTTPS ID IP JSON SEO SSL UTM XML
-				]
+				@acronyms ||= Set.new(
+					%w[API CLI DB DateTime FAQ HTML HTTP HTTPS ID IP JSON SEO SSL UTM XML]
+				)
 			end
 
 			## Regular expression for detecting known acronyms

@@ -2,4 +2,4 @@
 
 Dir.glob(
 	File.join(__dir__, 'gorilla_patch', '*.rb')
-).sort.each { |file| require file }
+).each { |file| require file }

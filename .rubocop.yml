@@ -42,7 +42,7 @@ RSpec/DescribeClass:
     - spec/gorilla_patch/inflections/sequel_spec.rb
 
 Metrics/BlockLength:
-  IgnoredMethods:
+  AllowedMethods:
     - refine
   Exclude:
     - '*.gemspec'

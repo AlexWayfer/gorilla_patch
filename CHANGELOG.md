@@ -2,6 +2,28 @@
 
 ## Unreleased
 
+## 5.0.0 (2022-09-24)
+
+*   Drop Ruby 2.4 support.
+*   Drop Ruby 2.5 support.
+*   Drop Ruby 2.6 support.
+    There was the latest patch-version, also `dry-inflector` stopped to support it.
+*   Drop Ruby 2.7 support.
+    There were no handy methods, like `Set#join`. Let's move on.
+*   Add Ruby 3.0 and 3.1 support.
+
+*   Populate default acronyms for `Inflections`.
+*   Fix order of default acronyms in `Inflections`.
+*   Change `Inflections.acronyms` from `Array` to `Set`.
+*   Improve implementation of `Cover`.
+*   Add `Module#deep_dup`.
+*   Fix `Blank` for classes, especially `Sequel::Model.`
+
+*   Update development dependencies.
+*   Resolve new RuboCop offenses.
+*   Update gemspec metadata.
+*   Improve CI.
+
 ## 4.0.0 (2020-06-06)
 
 *   Replace `inflecto` with `dry-inflector` (`.from_dry_inflector`)

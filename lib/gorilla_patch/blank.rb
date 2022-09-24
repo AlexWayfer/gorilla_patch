@@ -23,6 +23,13 @@ module GorillaPatch
 			end
 		end
 
+		## Also affects `Class`, including `Sequel::Model` with `.empty?`
+		refine Module do
+			def blank?
+				false
+			end
+		end
+
 		# rubocop:disable Metrics/BlockLength
 		REFINED_ENUMERABLES = [Array, Hash].freeze
 

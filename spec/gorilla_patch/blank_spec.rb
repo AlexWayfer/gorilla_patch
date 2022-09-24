@@ -151,4 +151,34 @@ describe GorillaPatch::Blank do
 			it { is_expected.to be hash }
 		end
 	end
+
+	describe Module, '#blank?' do
+		subject { object.blank? }
+
+		let(:object) { described_class.new }
+
+		it { is_expected.to be false }
+	end
+
+	describe Class, '#blank?' do
+		subject { object.blank? }
+
+		let(:object) { described_class.new }
+
+		it { is_expected.to be false }
+
+		## There is `Sequel::Model.empty?`, which used inside `blank?`
+		context 'when Class is `Sequel::Model`' do
+			require 'sequel'
+
+			let(:object) { described_class.new(Sequel::Model(:items)) }
+
+			before do
+				## https://github.com/jeremyevans/sequel/blob/ce5b073/spec/model/spec_helper.rb
+				Sequel::Model.db = Sequel.mock
+			end
+
+			it { is_expected.to be false }
+		end
+	end
 end

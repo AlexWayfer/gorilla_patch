@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 5.0.1 (2022-09-24)
+
+*   Require stdlib `set` for `Inflections`.
+
 ## 5.0.0 (2022-09-24)
 
 *   Drop Ruby 2.4 support.

@@ -45,6 +45,15 @@ hash.keys? :a, :b # undefined method!
 
 [It's standard feature](http://ruby-doc.org/core/doc/syntax/refinements_rdoc.html).
 
+
+### What if a method was implemented in new Ruby versions?
+
+Then native method in usage, not a custom implementation.
+
+For example, `Hash#except`.
+
+Before custom method declaration there is a check for current Ruby version.
+
 ## Methods
 
 *   **Blank**

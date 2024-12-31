@@ -12,7 +12,7 @@ group :development do
 	gem 'toys', '~> 0.15.3'
 
 	## For Inflections testing
-	gem 'dry-inflector', '~> 1.0.0'
+	gem 'dry-inflector', '~> 1.1.0'
 	gem 'sequel', '~> 5.0'
 end
 

@@ -102,7 +102,7 @@ module GorillaPatch
 			def define_methods_from_dry_inflector
 				inflector = Dry::Inflector.new
 
-				inflector.public_methods.each do |method_name|
+				inflector.public_methods(false).each do |method_name|
 					define_method method_name do
 						inflector.public_send method_name, self
 					end

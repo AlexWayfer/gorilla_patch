@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 6.0.0 (2026-02-08)
+
+*   Drop Ruby 3.0 and 3.1 support.
+*   Add Ruby 3.2, 3.3, 3.4 and 4.0 support.
+*   Improve documentation.
+*   Improve specs.
+*   Update development dependencies.
+*   Resolve new RuboCop offenses.
+*   Improve CI config.
+
 ## 5.0.1 (2022-09-24)
 
 *   Require stdlib `set` for `Inflections`.

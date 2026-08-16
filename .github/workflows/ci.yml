@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      remark: ${{ steps.filter.outputs.remark }}
+      bundle_audit: ${{ steps.filter.outputs.bundle_audit }}
+      rubocop: ${{ steps.filter.outputs.rubocop }}
+      rspec: ${{ steps.filter.outputs.rspec }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            remark:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - 'package.json'
+              - '.remarkrc.yaml'
+              - '**.md'
+            bundle_audit:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - 'Gemfile'
+              - '*.gemspec'
+            rubocop:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - 'Gemfile'
+              - '.rubocop.yml'
+              - '*.gemspec'
+              - '**.rb'
+              - '**.ru'
+            rspec:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - 'Gemfile'
+              - '.rspec'
+              - '*.gemspec'
+              - 'lib/**'
+              - 'spec/**'
+
+  remark:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.remark == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: node
+      - run: npm install
+      - run: npm run remark
+
+  bundle-audit:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.bundle_audit == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+      - run: bundle exec bundle-audit check --update
+
+  rubocop:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.rubocop == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+      - run: bundle exec rubocop
+
+  rspec:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.rspec == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version:
+          - '3.2'
+          - '3.3'
+          - '3.4'
+          - '4.0'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      - run: bundle exec rspec
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

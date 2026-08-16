@@ -1,6 +1,6 @@
 # Gorilla Patch
 
-[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/gorilla_patch?style=flat-square)](https://cirrus-ci.com/github/AlexWayfer/gorilla_patch)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AlexWayfer/gorilla_patch/ci.yml?style=flat-square)](https://github.com/AlexWayfer/gorilla_patch/actions)
 [![Codecov branch](https://img.shields.io/codecov/c/github/AlexWayfer/gorilla_patch/main.svg?style=flat-square)](https://codecov.io/gh/AlexWayfer/gorilla_patch)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/AlexWayfer/gorilla_patch.svg?style=flat-square)](https://codeclimate.com/github/AlexWayfer/gorilla_patch)
 [![Depfu](https://img.shields.io/depfu/AlexWayfer/gorilla_patch?style=flat-square)](https://depfu.com/repos/github/AlexWayfer/gorilla_patch)

@@ -181,20 +181,28 @@ describe GorillaPatch::Blank do
 		end
 	end
 
-	describe Module, '#blank?' do
-		subject { object.blank? }
+	describe Module do
+		subject(:object) { described_class.new }
 
-		let(:object) { described_class.new }
+		describe '#blank?' do
+			subject { object.blank? }
 
-		it { is_expected.to be false }
+			it { is_expected.to be false }
+		end
 	end
 
-	describe Class, '#blank?' do
-		subject { object.blank? }
+	describe Class do
+		subject { object }
 
-		let(:object) { described_class.new }
+		context 'when Class is regular' do
+			let(:object) { described_class.new }
 
-		it { is_expected.to be false }
+			describe '#blank?' do
+				subject { object.blank? }
+
+				it { is_expected.to be false }
+			end
+		end
 
 		## There is `Sequel::Model.empty?`, which used inside `blank?`
 		context 'when Class is `Sequel::Model`' do
@@ -207,7 +215,11 @@ describe GorillaPatch::Blank do
 				Sequel::Model.db = Sequel.mock
 			end
 
-			it { is_expected.to be false }
+			describe '#blank?' do
+				subject { object.blank? }
+
+				it { is_expected.to be false }
+			end
 		end
 	end
 end

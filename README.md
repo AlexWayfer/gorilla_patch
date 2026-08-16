@@ -57,7 +57,8 @@ Before custom method declaration there is a check for current Ruby version.
 
 *   **Blank**
 
-    *   **`String`**, **`NilClass`**, **`Object`** (relies on `#empty?` method)
+    *   **`String`**, **`NilClass`**, **`Object`** (relies on `#empty?` method),
+        **`Module`**, **`Class`**
 
         *   `#blank?`
 

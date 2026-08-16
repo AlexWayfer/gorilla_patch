@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 6.1.0 (2026-08-16)
+
+*   Add `#present?` for `Blank` refinement.
+*   Update development dependencies.
+*   Switch from Cirrus CI to GitHub Actions.
+*   Fix badges in README.
+
 ## 6.0.0 (2026-02-08)
 
 *   Drop Ruby 3.0 and 3.1 support.

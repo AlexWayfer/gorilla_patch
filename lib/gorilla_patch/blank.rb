@@ -9,25 +9,21 @@ module GorillaPatch
 			def blank?
 				strip.empty?
 			end
-
-			def present?
-				!blank?
-			end
 		end
 
 		refine NilClass do
 			def blank?
 				true
 			end
-
-			def present?
-				false
-			end
 		end
 
 		refine Object do
 			def blank?
 				respond_to?(:empty?) ? empty? : !self
+			end
+
+			def present?
+				!blank?
 			end
 		end
 

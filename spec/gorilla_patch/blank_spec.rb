@@ -25,10 +25,8 @@ describe GorillaPatch::Blank do
 		it { expect(nil.present?).to be false }
 	end
 
-	describe Object, '#blank?' do
-		subject { object.blank? }
-
-		let(:object) { object_class.new }
+	describe Object do
+		subject(:object) { object_class.new }
 
 		context 'when object has `#empty?` method' do
 			let(:object_class) do
@@ -39,7 +37,17 @@ describe GorillaPatch::Blank do
 				end
 			end
 
-			it { is_expected.to be true }
+			describe '#blank?' do
+				subject { object.blank? }
+
+				it { is_expected.to be true }
+			end
+
+			describe '#present?' do
+				subject { object.present? }
+
+				it { is_expected.to be false }
+			end
 		end
 
 		context 'when object has no `#empty?` method' do
@@ -49,7 +57,17 @@ describe GorillaPatch::Blank do
 				end
 			end
 
-			it { is_expected.to be false }
+			describe '#blank?' do
+				subject { object.blank? }
+
+				it { is_expected.to be false }
+			end
+
+			describe '#present?' do
+				subject { object.present? }
+
+				it { is_expected.to be true }
+			end
 		end
 	end
 

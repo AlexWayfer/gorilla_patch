@@ -10,8 +10,19 @@ describe GorillaPatch::Blank do
 		it { expect('  a  '.blank?).to be false }
 	end
 
+	describe String, '#present?' do
+		it { expect(''.present?).to be false }
+		it { expect('   '.present?).to be false }
+		it { expect(" \n\r ".present?).to be false }
+		it { expect('  a  '.present?).to be true }
+	end
+
 	describe NilClass, '#blank?' do
 		it { expect(nil.blank?).to be true }
+	end
+
+	describe NilClass, '#present?' do
+		it { expect(nil.present?).to be false }
 	end
 
 	describe Object, '#blank?' do

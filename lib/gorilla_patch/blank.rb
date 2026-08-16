@@ -9,11 +9,19 @@ module GorillaPatch
 			def blank?
 				strip.empty?
 			end
+
+			def present?
+				!blank?
+			end
 		end
 
 		refine NilClass do
 			def blank?
 				true
+			end
+
+			def present?
+				false
 			end
 		end
 

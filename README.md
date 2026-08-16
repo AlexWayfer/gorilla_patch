@@ -61,6 +61,8 @@ Before custom method declaration there is a check for current Ruby version.
 
         *   `#blank?`
 
+        *   `#present?`
+
     *   **`Array`**, **`Hash`**
 
         *   `#reject_blank_strings`
